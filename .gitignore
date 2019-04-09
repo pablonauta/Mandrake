@@ -3,3 +3,4 @@ Cppes/DtConsulta.o
 *.o
 *.exe
 Mandrake/
+Makefile.win
