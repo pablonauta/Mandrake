@@ -81,10 +81,10 @@ cout << "zona de pruebas" << endl << endl;
 	cout << socio->GetFecha().getDia() << "-";
 	cout << socio->GetFecha().getMes() << "-";
 	cout << socio->GetFecha().getAnio() << endl;
-	Mascota* xs = new Gato("Piruja", Hembra, 120, Corto);
-	cout << xs->GetNombre() << endl;
-	cout << xs->GetPeso() << endl;
-	cout << xs->GetGenero() << endl;
+	Mascota xs = Gato("Piruja", Hembra, 120, Corto);
+	cout << xs.GetNombre() << endl;
+	cout << xs.GetPeso() << endl;
+	cout << xs.GetGenero() << endl;
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
