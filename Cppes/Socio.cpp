@@ -3,6 +3,7 @@
 Socio::Socio(string ci, string nombre, const DtFecha& fecha) : fechaIngreso(fecha){
 	this->ci = ci;
 	this->nombre = nombre;
+	this->CantMascotas = 0;	
 }
 
 string Socio::GetCi() const{

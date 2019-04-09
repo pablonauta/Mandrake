@@ -2,6 +2,7 @@
 #define SOCIO_H
 
 #include "../Clases/DtFecha.h"
+#include "../Clases/Mascota.h"
 #include <string>
 
 using namespace std;
@@ -13,6 +14,7 @@ class Socio {
 		DtFecha fechaIngreso;
 	
 	public:
+		int CantMascotas;
 		Socio(string ci, string nombre, const DtFecha& fecha);
 		string GetCi() const;
 		string GetNombre() const;
@@ -20,6 +22,7 @@ class Socio {
 		void SetCi(string ci);
 		void SetNombre(string nombre);
 		void SetFecha(const DtFecha& fecha);
+		Mascota** masco;
 		~Socio();	
 };
 
