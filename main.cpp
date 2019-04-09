@@ -10,6 +10,7 @@
 #include "Clases/Socio.h"
 #include "Clases/Mascota.h"
 #include "Clases/Gato.h"
+#include "Clases/Perro.h"
 
 using namespace std;
 
@@ -82,9 +83,13 @@ cout << "zona de pruebas" << endl << endl;
 	cout << socio->GetFecha().getMes() << "-";
 	cout << socio->GetFecha().getAnio() << endl;
 	Mascota xs = Gato("Piruja", Hembra, 120, Corto);
+	Mascota sx = Perro("Rope", Macho, 19, labrador, true);
 	cout << xs.GetNombre() << endl;
 	cout << xs.GetPeso() << endl;
 	cout << xs.GetGenero() << endl;
+	cout << sx.GetNombre() << endl;
+	cout << sx.GetPeso() << endl;
+	cout << sx.GetGenero() << endl;
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
