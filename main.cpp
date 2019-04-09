@@ -15,7 +15,7 @@
 using namespace std;
 
 
-const int MAX_SOCIOS = 50;
+const int MAX_SOCIOS = 10;
 const int MAX_MASCOTA = 10;
 
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota);
@@ -48,6 +48,8 @@ int main(int argc, char** argv) {
 // zona de pruebas x 
 cout << "zona de pruebas" << endl << endl; 
 
+	Socio** socios = new Socio* [MAX_SOCIOS];
+		
 
 	
 	DtMascota* x = new DtGato("Mishu", Macho, 40, Corto);
@@ -90,6 +92,12 @@ cout << "zona de pruebas" << endl << endl;
 	cout << sx.GetNombre() << endl;
 	cout << sx.GetPeso() << endl;
 	cout << sx.GetGenero() << endl;
+	
+	for (int i=0; i<MAX_SOCIOS; i++)
+			socios[i] = new Socio( "5555", "pepe", hoy);
+			
+	for (int i=0; i<MAX_SOCIOS; i++)
+		cout <<	socios[i]->GetNombre() << endl;
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
