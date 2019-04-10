@@ -271,7 +271,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit23]
-FileName=Consulta.h
+FileName=Clases\Consulta.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -281,7 +281,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit24]
-FileName=Consulta.cpp
+FileName=Cppes\Consulta.cpp
 CompileCpp=1
 Folder=
 Compile=1

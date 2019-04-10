@@ -3,7 +3,8 @@
 Socio::Socio(string ci, string nombre, const DtFecha& fecha) : fechaIngreso(fecha){
 	this->ci = ci;
 	this->nombre = nombre;
-	this->masco = new Mascota* [10];
+	this->masco = new Mascota* [MAX_MASCOTAS];
+	this->consu = new Consulta* [MAX_CONSULTAS];
 }
 
 string Socio::GetCi() const{
@@ -31,5 +32,6 @@ void Socio::SetNombre(string nombre){
 }
 
 Socio::~Socio(){
-	
+	delete this->masco;
+	delete this->consu;
 }
