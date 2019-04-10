@@ -84,17 +84,23 @@ cout << "zona de pruebas" << endl << endl;
 	cout << socio->GetFecha().getDia() << "-";
 	cout << socio->GetFecha().getMes() << "-";
 	cout << socio->GetFecha().getAnio() << endl;
-	Mascota xs = Gato("Piruja", Hembra, 120, Corto);
-	Mascota sx = Perro("Rope", Macho, 19, labrador, true);
-	cout << xs.GetNombre() << endl;
-	cout << xs.GetPeso() << endl;
-	cout << xs.GetGenero() << endl;
-	cout << sx.GetNombre() << endl;
-	cout << sx.GetPeso() << endl;
-	cout << sx.GetGenero() << endl;
+	Mascota* xs = new Gato("Piruja", Hembra, 120, Corto);
+	Mascota* sx = new Perro("Rope", Macho, 19, labrador, true);
+	cout << xs->GetNombre() << endl;
+	cout << xs->GetPeso() << endl;
+	cout << xs->GetGenero() << endl;
+	cout << sx->GetNombre() << endl;
+	cout << sx->GetPeso() << endl;
+	cout << sx->GetGenero() << endl;
 	
 	for (int i=0; i<MAX_SOCIOS; i++)
 			socios[i] = new Socio( "5555", "pepe", hoy);
+		
+	socios[0]->AgregarMascota(xs);
+	socios[0]->AgregarMascota(sx);	
+	Consulta* erre = new Consulta(hoy, "cualquier cosa");
+	socios[0]->AgregarConsulta(erre);
+	
 			
 	for (int i=0; i<MAX_SOCIOS; i++)
 		cout <<	socios[i]->GetNombre() << endl;

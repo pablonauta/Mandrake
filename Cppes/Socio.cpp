@@ -5,6 +5,20 @@ Socio::Socio(string ci, string nombre, const DtFecha& fecha) : fechaIngreso(fech
 	this->nombre = nombre;
 	this->masco = new Mascota* [MAX_MASCOTAS];
 	this->consu = new Consulta* [MAX_CONSULTAS];
+	this->cantMasco = 0;
+	this->cantConsu = 0;
+}
+
+void Socio::AgregarConsulta(Consulta* x){
+	for (int i=0; i < this->cantConsu; i++)
+	this->consu[i] = x;
+	this->cantConsu++;
+}
+
+void Socio::AgregarMascota(Mascota* f){
+	for (int i=0; i < this->cantMasco; i++)
+	this->masco[i] = f;
+	this->cantMasco++;
 }
 
 string Socio::GetCi() const{
