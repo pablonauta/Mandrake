@@ -25,6 +25,7 @@ void DtPerro::setRazaperoo(RazaPerro raza){
 void DtPerro::setVacunaCachorro(bool vacuna){
 	this->vacunaCachorro = vacuna;
 }
+
 DtPerro::~DtPerro(){
 	
 }
