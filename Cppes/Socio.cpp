@@ -45,6 +45,13 @@ void Socio::SetNombre(string nombre){
 	this->nombre = nombre;
 }
 
+int Socio::GetCantConsu(){
+	return this->cantConsu;
+}
+
+int Socio::GetCantMasco(){
+	return this->cantMasco;
+}
 Socio::~Socio(){
 	delete this->masco;
 	delete this->consu;

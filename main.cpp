@@ -95,11 +95,15 @@ cout << "zona de pruebas" << endl << endl;
 	
 	for (int i=0; i<MAX_SOCIOS; i++)
 			socios[i] = new Socio( "5555", "pepe", hoy);
-		
+			
+	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
+	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
 	socios[0]->AgregarMascota(xs);
 	socios[0]->AgregarMascota(sx);	
 	Consulta* erre = new Consulta(hoy, "cualquier cosa");
 	socios[0]->AgregarConsulta(erre);
+	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
+	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
 	
 			
 	for (int i=0; i<MAX_SOCIOS; i++)

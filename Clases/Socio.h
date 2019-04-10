@@ -31,6 +31,8 @@ class Socio {
 		void AgregarMascota(Mascota* f);
 		Mascota** masco;
 		Consulta** consu;
+		int GetCantMasco();
+		int GetCantConsu();
 		~Socio();	
 };
 
