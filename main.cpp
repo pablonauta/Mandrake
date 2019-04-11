@@ -17,10 +17,10 @@
 using namespace std;
 
 
-const int MAX_SOCIOS = 10;
+const int MAX_SOCIOS = 50;
 const int MAX_MASCOTA = 10;
 Socio** socios = new Socio* [MAX_SOCIOS];
-int cantidadSocios = 50;
+int cantidadSocios = 0;
 
 void preSocio();
 // Le da forma al socio
@@ -199,7 +199,8 @@ void preSocio(){
 	// reivsar ci repetida
 	cout << "nombre: ";
 	cin >> nombre;
-	cout << "Si la mascota es Perro->ingrese 0, si es Gato->ingrese 1 : ";
+	cout << "Si la mascota es Perro->ingrese 0," << endl;
+	cout << "si es Gato->ingrese 1 : ";
 	cin >> pog;
 	if (pog == 0){
 		string nombreMascota;
@@ -239,6 +240,7 @@ void preSocio(){
 	
 		registrarSocio(ci, nombre, DtGato(nombreMascota, genero, peso, pelo));
 		cantidadSocios++;
+		cout << cantidadSocios;
 		return;
 	
 	}
