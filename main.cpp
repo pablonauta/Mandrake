@@ -278,12 +278,8 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 //        socios[cantidadSocios].AgregarMascota() = new Gato(dtMascota.nombre, dtMacosta.genero, dtMascota.peso, dtMascota.pelo);
     }
     else {
-//        DtEmpresaExtranjera* dee = (DtEmpresaExtranjera*) empresa;
-//        empresas[cantidadEmpresas] = new EmpresaExtranjera(
-//            dee->getId(),
-//            dee->getDireccion(),
-//            dee->getNombreFantacia()
-//        );
+//       
+//        
     }
 	
 	
