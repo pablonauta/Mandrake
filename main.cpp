@@ -225,7 +225,11 @@ void preSocio(){
 		cin >> nombreMascota;
 		cout << "Vacuna de la mascota: ";
 		cin >> nombreMascota;
-		registrarSocio(ci, nombre, DtPerro(nombreMascota, genero, peso, raza, vacuna));
+		
+		DtPerro ultraperro = DtPerro(nombreMascota, genero, raza, vacuna);
+		ultragato.SetSoy_un('p');
+		
+		registrarSocio(ci, nombre, ultraperro);
 		return;
 	
 	}
@@ -243,8 +247,11 @@ void preSocio(){
 		cin >> nombreMascota;
 		cout << "Pelo de la mascota: ";
 		cin >> nombreMascota;
+		
+		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
+		ultragato.SetSoy_un('g');
 	
-		registrarSocio(ci, nombre, DtGato(nombreMascota, genero, peso, pelo));
+		registrarSocio(ci, nombre, ultragato);
 
 		cout << cantidadSocios;
 		return;
@@ -272,15 +279,15 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	
 //	DtMascota* dogcat;
 //	DtGato* mascota = dynamic_cast<DtGato*>(dogcat);
-    const DtGato* der = dynamic_cast<const DtGato*>(dtMascota);
-  
-    if (mascota) {
-//        socios[cantidadSocios].AgregarMascota() = new Gato(dtMascota.nombre, dtMacosta.genero, dtMascota.peso, dtMascota.pelo);
-    }
-    else {
-//       
-//        
-    }
+    //const DtGato* der = dynamic_cast<const DtGato*>(dtMascota);
+//  
+//    if (mascota) {
+////        socios[cantidadSocios].AgregarMascota() = new Gato(dtMascota.nombre, dtMacosta.genero, dtMascota.peso, dtMascota.pelo);
+//    }
+//    else {
+////       
+////        
+//    }
 	
 	
 	
