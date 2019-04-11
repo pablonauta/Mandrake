@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <stdio.h>
+#include <ctime>
 
 #include "Clases/DtMascota.h"
 #include "Clases/DtConsulta.h"
@@ -111,7 +112,13 @@ int main(int argc, char** argv) {
 	socios[0]->AgregarConsulta(erre);
 	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
 	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
-	
+	char output[10];
+//	char tlocal[2]="UY";
+//	strftime(output,10,"%d/%m/%y",tlocal);
+	std::time_t result = std::time(NULL);
+    std::cout << std::asctime(std::localtime(&result));
+    
+
 			
 	for (int i=0; i<MAX_SOCIOS; i++)
 		cout <<	socios[i]->GetNombre() << endl;
@@ -200,7 +207,7 @@ void preSocio(){
 	cout << "nombre: ";
 	cin >> nombre;
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
-	cout << "si es Gato->ingrese 1 : ";
+	cout << "           si es Gato->ingrese 1 : ";
 	cin >> pog;
 	if (pog == 0){
 		string nombreMascota;
@@ -219,7 +226,6 @@ void preSocio(){
 		cout << "Vacuna de la mascota: ";
 		cin >> nombreMascota;
 		registrarSocio(ci, nombre, DtPerro(nombreMascota, genero, peso, raza, vacuna));
-		cantidadSocios++;
 		return;
 	
 	}
@@ -239,7 +245,7 @@ void preSocio(){
 		cin >> nombreMascota;
 	
 		registrarSocio(ci, nombre, DtGato(nombreMascota, genero, peso, pelo));
-		cantidadSocios++;
+
 		cout << cantidadSocios;
 		return;
 	
@@ -254,6 +260,15 @@ void preSocio(){
 
 
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
+	int dia,mes, anio;
+	cout << "Ingrese dia: ";
+	cin >> dia;
+	cout << "Ingrese mes: ";
+	cin >> mes;
+	cout << "Ingrese anio: ";
+	cin >> anio;
+	DtFecha fecha = DtFecha(dia, mes, anio);
+	socios[cantidadSocios] = new Socio(ci, nombre, fecha);
 	
 	
 //	string cedula;
