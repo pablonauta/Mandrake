@@ -270,6 +270,23 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	DtFecha fecha = DtFecha(dia, mes, anio);
 	socios[cantidadSocios] = new Socio(ci, nombre, fecha);
 	
+//	DtMascota* dogcat;
+//	DtGato* mascota = dynamic_cast<DtGato*>(dogcat);
+    const DtGato* der = dynamic_cast<const DtGato*>(dtMascota);
+  
+    if (mascota) {
+//        socios[cantidadSocios].AgregarMascota() = new Gato(dtMascota.nombre, dtMacosta.genero, dtMascota.peso, dtMascota.pelo);
+    }
+    else {
+//        DtEmpresaExtranjera* dee = (DtEmpresaExtranjera*) empresa;
+//        empresas[cantidadEmpresas] = new EmpresaExtranjera(
+//            dee->getId(),
+//            dee->getDireccion(),
+//            dee->getNombreFantacia()
+//        );
+    }
+	
+	
 	
 //	string cedula;
 //	string nombreCliente;
