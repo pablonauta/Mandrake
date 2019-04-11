@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <stdio.h>
 
 #include "Clases/DtMascota.h"
 #include "Clases/DtConsulta.h"
@@ -12,12 +13,17 @@
 #include "Clases/Gato.h"
 #include "Clases/Perro.h"
 
+
 using namespace std;
 
 
 const int MAX_SOCIOS = 10;
 const int MAX_MASCOTA = 10;
+Socio** socios = new Socio* [MAX_SOCIOS];
+int cantidadSocios = 50;
 
+void preSocio();
+// Le da forma al socio
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota);
 // Registra un socio con su mascota. El valor el atributo racionDiaria se debe setear en 0.
 void agregarMascota(string ci, const DtMascota& dtMascota);
@@ -46,9 +52,9 @@ DtMascota** obtenerMascotas(string ci, int& cantMascotas);
 int main(int argc, char** argv) {
 	
 // zona de pruebas x 
-cout << "zona de pruebas" << endl << endl; 
+	cout << "zona de pruebas" << endl << endl; 
 
-	Socio** socios = new Socio* [MAX_SOCIOS];
+
 		
 
 	
@@ -100,6 +106,7 @@ cout << "zona de pruebas" << endl << endl;
 	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
 	socios[0]->AgregarMascota(xs);
 	socios[0]->AgregarMascota(sx);	
+	socios[0]->AgregarMascota(sx);
 	Consulta* erre = new Consulta(hoy, "cualquier cosa");
 	socios[0]->AgregarConsulta(erre);
 	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
@@ -129,7 +136,8 @@ cout << endl << "fin zona de pruebas" << endl << endl;
     while (command != "0") {
         try {
             if (command == "1") {
-				cout << "Registrando socio..." << endl;
+				cout << "Registrando socio..." << endl << flush;
+				preSocio();
 				
             }
             else if (command == "agregarEmpresa") {
@@ -177,5 +185,90 @@ cout << endl << "fin zona de pruebas" << endl << endl;
     
     return 0;
 }
+
+void preSocio(){
+	if (cantidadSocios == MAX_SOCIOS) {
+		throw std::invalid_argument("No se pueden agregar mas socios");
+	}
+	string ci;
+	string nombre;
+	int pog;
+	cout << "ci: ";
+	fflush(stdin);
+	cin >> ci;
+	// reivsar ci repetida
+	cout << "nombre: ";
+	cin >> nombre;
+	cout << "Si la mascota es Perro->ingrese 0, si es Gato->ingrese 1 : ";
+	cin >> pog;
+	if (pog == 0){
+		string nombreMascota;
+		Genero genero;
+		float peso;
+		RazaPerro raza;
+		bool vacuna;
+		cout << "Nombre de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Genero de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Peso de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Raza de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Vacuna de la mascota: ";
+		cin >> nombreMascota;
+		registrarSocio(ci, nombre, DtPerro(nombreMascota, genero, peso, raza, vacuna));
+		cantidadSocios++;
+		return;
+	
+	}
+	
+	if (pog == 1){
+		string nombreMascota;
+		Genero genero;
+		float peso;
+		TipoPelo pelo;
+		cout << "Nombre de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Genero de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Peso de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Pelo de la mascota: ";
+		cin >> nombreMascota;
+	
+		registrarSocio(ci, nombre, DtGato(nombreMascota, genero, peso, pelo));
+		cantidadSocios++;
+		return;
+	
+	}
+
+
+	
+	
+}
+
+
+
+
+void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
+	
+	
+//	string cedula;
+//	string nombreCliente;
+//	int pog;
+//	cout << "ci: ";
+//	cin >> cedula;
+//	// reivsar ci repetida
+//	cout << "nombre: ";
+//	system("pause");
+//	cin >> nombreCliente;
+//	cout << "Si la mascota es perro ingrese 0, si es gato ingrese 1 :";
+//	cin >> pog;
+//	
+		
+
+}
+
 
 
