@@ -539,7 +539,6 @@ void preDtMascota(){
 	}	
 	
 	
-	
 }
 
 
@@ -555,10 +554,30 @@ Socio* checkCi(string ci){
 
 
 void agregarMascota(string ci, const DtMascota& dtMascota){
-	
-	
+	Socio* m = checkCi(ci);
+	DtMascota* cat;
+	cat = const_cast<DtMascota*>(&dtMascota);
+	DtPerro* toga = dynamic_cast<DtPerro*>(cat);
 
+	if (toga){
+		cout << "bo, soy un maldito perro!" << endl;
 
+		m->AgregarMascota(new Perro(toga->getNombre(), 
+						   			toga->getGenero(), 
+									toga->getPeso(), 
+									toga->getRaza(), 
+									toga->getVacunaCachorro()));
+	
+	}
+	else{
+		cout << "bo, soy un maldito gato!" << endl;
+		DtGato* gat = (DtGato*)cat;
+		m->AgregarMascota(new Gato(gat->getNombre(), 
+								   gat->getGenero(), 
+   		   						   gat->getPeso(), 
+								   gat->getPelo()));
+	}		
+	
 
 }
 
