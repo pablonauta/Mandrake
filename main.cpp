@@ -137,6 +137,7 @@ cout << endl << "fin zona de pruebas" << endl << endl;
     cin >> command;
     
     while (command != "0") {
+    	
         try {
             if (command == "1") {
 				cout << "Registrando socio..." << endl << flush;
@@ -179,6 +180,15 @@ cout << endl << "fin zona de pruebas" << endl << endl;
         }
         catch(std::invalid_argument &ia) {
             cout << "Error: " << ia.what() << endl;
+            //efecto refresco de menu...
+            cout << "*******************************" << endl;
+		    cout << "1 - Registar Socio " << endl;
+		    cout << "2 - Agregar Mascota " << endl;
+			cout << "3 - Ingresar Consulta " << endl;   
+			cout << "4 - Ver Consulta antes de fecha" << endl;
+			cout << "5 - Ver Consulta antes de fecha" << endl;
+			cout << "6 - Obtener mascotas" << endl;
+			cout << "0 - Salir" << endl;
         }
         
         cout << ">";
