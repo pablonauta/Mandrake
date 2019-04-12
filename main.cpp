@@ -37,10 +37,13 @@ void agregarMascota(string ci, const DtMascota& dtMascota);
 // Agrega una nueva mascota a un socio ya registrado. 
 // Si no existe un socio registrado con esa cédula, se
 //levanta una excepción std::invalid_argument.
+void preConsulta();
+// armo la consulta
 void ingresarConsulta(string motivo, string ci);
 //. Crea una consulta con un motivo para
 // un socio. Si no existe un socio registrado con esa cédula, se levanta una excepción
 // std::invalid_argument.
+void verConsultas();
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio,
 int& cantConsultas);
 // que devuelve las consultas antes de cierta fecha. Para poder
@@ -59,15 +62,7 @@ DtMascota** obtenerMascotas(string ci, int& cantMascotas);
 int main(int argc, char** argv) {
 	
 // zona de pruebas x 
-	cout << "zona de pruebas" << endl << endl; 
-
-
-
-	
-
-
-    
-
+cout << "zona de pruebas" << endl << endl; 
 
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
@@ -79,9 +74,10 @@ cout << endl << "fin zona de pruebas" << endl << endl;
     cout << "1 - Registar Socio " << endl;
     cout << "2 - Agregar Mascota " << endl;
 	cout << "3 - Ingresar Consulta " << endl;   
-	cout << "4 - Ver Consulta antes de fecha" << endl;
-	cout << "5 - Listar socios" << endl;
-	cout << "6 - Obtener mascotas" << endl;
+	cout << "4 - Ver Consultas" << endl;
+	cout << "5 - Ver Consulta antes de fecha" << endl;
+	cout << "6 - Listar socios" << endl;
+	cout << "7 - Obtener mascotas" << endl;
 	cout << "0 - Salir" << endl;
     string command;
     cout << ">";
@@ -102,11 +98,14 @@ cout << endl << "fin zona de pruebas" << endl << endl;
                 
             }
             else if (command == "5") {
+            	
             	listarSocios();
 
 
             }
-            else if (command == "agregarEmpresaEmpleado") {
+            else if (command == "3") {
+            	cout << "Agregando consulta..." << endl << flush;
+            	preConsulta();
 
 
             }
@@ -548,4 +547,51 @@ void listarSocios(){
 	}
 }
 
+void preConsulta(){
+	string ci;
+	cout << "Ingresar ci";
+	cin >> ci;
+	Socio* x = checkCi(ci);
+	if (x == NULL)
+		throw std::invalid_argument("no existe ci");
+		
+	if (x->GetMAX_CONSULTAS() == x->GetCantConsu())
+		throw std::invalid_argument("lleno de consultas");
+	
+	string moti;
+	cout << "Motivo: ";
+	cin >> moti;
+	ingresarConsulta(moti, ci);
 
+}
+
+void ingresarConsulta(string motivo, string ci){
+	Socio* x = checkCi(ci);
+	int dia,mes, anio;
+	cout << " Fecha de ingreso " << endl;
+	cout << "Ingrese dia: ";
+	cin >> dia;
+	cout << "Ingrese mes: ";
+	cin >> mes;
+	cout << "Ingrese anio: ";
+	cin >> anio;
+	
+	DtFecha fecha = DtFecha(dia, mes, anio);
+	Consulta* c = new Consulta(fecha, motivo);
+	x->AgregarConsulta(c);
+}
+
+
+void verConsultas(){
+	string ci;
+	cout << "Ingresar ci: ";
+	cin >> ci;
+	Socio* x = checkCi(ci);
+	if (x == NULL)
+		throw std::invalid_argument("no existe ci");
+
+	for (int i=0; i<x->GetCantConsu(); i++)
+		cout << x->consu[i]->GetMotivo() << endl;
+	
+	
+}

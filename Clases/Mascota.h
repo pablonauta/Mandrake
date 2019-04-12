@@ -18,7 +18,7 @@ class Mascota {
 		float GetPeso() const;
 		Genero GetGenero() const;
 		string GetNombre() const;
-
+		
 		void SetPeso(float peso);
 		void SetGenero(Genero genero);
 		void SetNombre(string nombre);

@@ -11,6 +11,7 @@ class Consulta {
 		
 	public:
 		Consulta(const DtFecha& fecha, string motivo);
+	    string GetMotivo();
 		~Consulta();	
 };
 
