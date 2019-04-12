@@ -56,7 +56,6 @@ int main(int argc, char** argv) {
 	cout << "zona de pruebas" << endl << endl; 
 
 
-		
 
 	
 	DtMascota* x = new DtGato("Mishu", Macho, 40, Corto);
@@ -113,10 +112,7 @@ int main(int argc, char** argv) {
 	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
 	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
 	char output[10];
-//	char tlocal[2]="UY";
-//	strftime(output,10,"%d/%m/%y",tlocal);
-	std::time_t result = std::time(NULL);
-    std::cout << std::asctime(std::localtime(&result));
+
     
 
 			
@@ -197,6 +193,7 @@ void preSocio(){
 	if (cantidadSocios == MAX_SOCIOS) {
 		throw std::invalid_argument("No se pueden agregar mas socios");
 	}
+	int gen;
 	string ci;
 	string nombre;
 	int pog;
@@ -207,8 +204,11 @@ void preSocio(){
 	cout << "nombre: ";
 	cin >> nombre;
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
-	cout << "           si es Gato->ingrese 1 : ";
+	cout << "           si es Gato-->ingrese 1 : ";
 	cin >> pog;
+	if (pog != 0 && pog != 1)
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+	
 	if (pog == 0){
 		string nombreMascota;
 		Genero genero;
@@ -217,43 +217,109 @@ void preSocio(){
 		bool vacuna;
 		cout << "Nombre de la mascota: ";
 		cin >> nombreMascota;
-		cout << "Genero de la mascota: ";
-		cin >> nombreMascota;
-		cout << "Peso de la mascota: ";
-		cin >> nombreMascota;
-		cout << "Raza de la mascota: ";
-		cin >> nombreMascota;
+		cout << "Genero de la mascota: " << endl;
+		cout << "Si es Macho,  ingrese->0 " << endl;
+		cout << "Si es Hembra, ingrese->1 " << endl;
+		cin >> gen;
+		switch (gen){
+			case(0):
+				genero = Macho;
+				break;
+			case(1):
+				genero = Hembra;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
+		cout << "Peso de la mascota: " << endl;
+		cin >> peso;
+		cout << "Raza de la mascota: " << endl;
+		cin >> gen;
+			switch (gen){
+			case(0):
+				raza = labrador;
+				break;
+			case(1):
+				raza = ovejero;
+				break;
+			case(2):
+				raza = bulldog;
+				break;
+			case(3):
+				raza = pitbull;
+				break;
+			case(4):
+				raza = collie;
+				break;
+			case(5):
+				raza = pekines;
+				break;
+			case(6):
+				raza = otro;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
+		
 		cout << "Vacuna de la mascota: ";
 		cin >> nombreMascota;
 		
-		DtPerro ultraperro = DtPerro(nombreMascota, genero, raza, vacuna);
-		ultragato.SetSoy_un('p');
-		
+		DtMascota ultraperro = DtPerro(nombreMascota, genero, peso, raza, vacuna);
+		ultraperro.SetSoy_un('p');
 		registrarSocio(ci, nombre, ultraperro);
+	
 		return;
 	
 	}
 	
 	if (pog == 1){
 		string nombreMascota;
+		
 		Genero genero;
 		float peso;
 		TipoPelo pelo;
 		cout << "Nombre de la mascota: ";
 		cin >> nombreMascota;
-		cout << "Genero de la mascota: ";
-		cin >> nombreMascota;
-		cout << "Peso de la mascota: ";
-		cin >> nombreMascota;
-		cout << "Pelo de la mascota: ";
-		cin >> nombreMascota;
+		cout << "Genero de la mascota: " << endl;
+		cout << "Si es Macho,  ingrese->0 " << endl;
+		cout << "Si es Hembra, ingrese->1 " << endl;
+		cin >> gen;
+		switch (gen){
+			case(0):
+				genero = Macho;
+				break;
+			case(1):
+				genero = Hembra;
+				break;
+		}
 		
-		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
+		cout << "Peso de la mascota: ";
+		cin >> peso;
+		cout << "Pelo de la mascota: "<< endl;
+		cout << "Si es Corto,   ingrese->0 " << endl;
+		cout << "Si es Mediano, ingrese->1 " << endl;
+		cout << "Si es Largo,   ingrese->2 " << endl;
+		cin >> gen;
+		
+		switch (gen){
+			case(0):
+				pelo = Corto;
+				break;
+			case(1):
+				pelo = Mediano;
+				break;
+			case(2):
+				pelo = Largo;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
+		
+				
+		DtMascota ultragato = DtGato(nombreMascota, genero, peso, pelo);
 		ultragato.SetSoy_un('g');
 	
 		registrarSocio(ci, nombre, ultragato);
-
-		cout << cantidadSocios;
 		return;
 	
 	}
