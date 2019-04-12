@@ -369,32 +369,17 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 //hay que revisar la fecha valida;
 	
 	DtFecha fecha = DtFecha(dia, mes, anio);
-	
 	socios[cantidadSocios] = new Socio(ci, nombre, fecha);
-	
 	DtMascota* cat;
-
 	cat = const_cast<DtMascota*>(&dtMascota);
-
-	cout << cat->getNombre() << endl;
-	
 	DtPerro* toga = dynamic_cast<DtPerro*>(cat);
-	
-	
 
 	if (toga){
 		cout << "bo, soy un maldito perro!";
-		
-		
-		
 	}
-	
-	if (dtMascota.getSoy_un() == 'p'){
-		cout << "soy un boludo!" << endl;
-		return;
-		
+	else{
+		cout << "bo, soy un maldito gato!";
 	}
-
 		
 
 }

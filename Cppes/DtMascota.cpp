@@ -8,9 +8,6 @@ DtMascota::DtMascota(string nombre, Genero genero, float peso){
 	this->racionDiaria = 0;
 }
 
-char DtMascota::getSoy_un() const{
-	return this->soy_un;
-}
 
 
 

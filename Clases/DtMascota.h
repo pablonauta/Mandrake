@@ -21,7 +21,6 @@ class DtMascota  {
 		Genero getGenero() const;
 		float getPeso() const;
 		float getRacionDiaria() const;
-		char getSoy_un() const;
 		void setNombre(string nombre);
 		void setGenero(Genero genero);
 		void setPeso(float peso);
