@@ -209,9 +209,11 @@ void preSocio(){
 	fflush(stdin);
 	cin >> ci;
 	// reivsar ci repetida
-	if (checkCi(ci) != NULL)
-		throw std::invalid_argument("el socio ya existe");
-		
+	if (cantidadSocios>0){
+		if (checkCi(ci) != NULL)
+			throw std::invalid_argument("el socio ya existe");
+	}
+	
 	cout << "nombre: ";
 	cin >> nombre;
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
@@ -544,7 +546,7 @@ void preDtMascota(){
 Socio* checkCi(string ci){
 	
 	for (int i=0; i<cantidadSocios; i++){
-		if (socios[cantidadSocios]->GetCi() == ci){
+		if (socios[i]->GetCi() == ci){
 			return socios[cantidadSocios];			
 		}
 	}
