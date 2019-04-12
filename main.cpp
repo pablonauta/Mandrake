@@ -287,8 +287,8 @@ void preSocio(){
 				throw std::invalid_argument("Error en los datos ingresados al sistema");
 		}
 		
-		DtMascota ultraperro = DtPerro(nombreMascota, genero, peso, raza, vacuna);
-		ultraperro.SetSoy_un('p');
+	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
+		//ultraperro.SetSoy_un('p');
 		registrarSocio(ci, nombre, ultraperro);
 	
 		return;
@@ -341,8 +341,8 @@ void preSocio(){
 		}
 		
 				
-		DtMascota ultragato = DtGato(nombreMascota, genero, peso, pelo);
-		ultragato.SetSoy_un('g');
+		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
+		//ultragato.SetSoy_un('g');
 	
 		registrarSocio(ci, nombre, ultragato);
 		return;
