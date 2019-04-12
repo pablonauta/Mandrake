@@ -27,6 +27,7 @@ void preSocio();
 // Le da forma al socio
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota);
 // Registra un socio con su mascota. El valor el atributo racionDiaria se debe setear en 0.
+void preDtMascota();
 void agregarMascota(string ci, const DtMascota& dtMascota);
 // Agrega una nueva mascota a un socio ya registrado. 
 // Si no existe un socio registrado con esa cédula, se
@@ -144,17 +145,11 @@ cout << endl << "fin zona de pruebas" << endl << endl;
 				preSocio();
 				
             }
-            else if (command == "agregarEmpresa") {
-                string tipo;
-                cin >> tipo;
-                if (tipo == "Nacional") {
-
-
-                }
-                else {
-
-
-               }
+            else if (command == "1") {
+            	cout << "Agregando mascota..." << endl << flush;
+                preDtMascota();
+                
+                
             }
             else if (command == "listarEmpleados") {
 
@@ -342,8 +337,6 @@ void preSocio(){
 		
 				
 		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
-	
-	
 		registrarSocio(ci, nombre, ultragato);
 		return;
 	
@@ -393,5 +386,162 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	cantidadSocios++;
 }
 
+void preDtMascota(){
+	string ci;
+	int pog;
+	int gen;
+	cout << "ingrese la ci :";
+	cin >> ci;
+	
+	// revisar si existe la cedula
+	// revisar el limite de mascotas
+	
+	cout << "Si la mascota es Perro->ingrese 0," << endl;
+	cout << "           si es Gato-->ingrese 1 : ";
+	cin >> pog;
+	if (pog != 0 && pog != 1)
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+	
+	if (pog == 0){
+		string nombreMascota;
+		Genero genero;
+		float peso;
+		RazaPerro raza;
+		bool vacuna;
+		cout << "Nombre de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Genero de la mascota: " << endl;
+		cout << "Si es Macho,  ingrese->0 " << endl;
+		cout << "Si es Hembra, ingrese->1 " << endl;
+		cin >> gen;
+		switch (gen){
+			case(0):
+				genero = Macho;
+				break;
+			case(1):
+				genero = Hembra;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
+		cout << "Peso de la mascota: " << endl;
+		cin >> peso;
+		cout << "Raza de la mascota: " << endl;
+		cin >> gen;
+			switch (gen){
+			case(0):
+				raza = labrador;
+				break;
+			case(1):
+				raza = ovejero;
+				break;
+			case(2):
+				raza = bulldog;
+				break;
+			case(3):
+				raza = pitbull;
+				break;
+			case(4):
+				raza = collie;
+				break;
+			case(5):
+				raza = pekines;
+				break;
+			case(6):
+				raza = otro;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
+		
+		cout << "Vacuna de la mascota: " << endl;
+		cout << "Sin vacuna ingrese-> 0 " << endl;
+		cout << "Con vacuna ingrese-> 1 " << endl;
+		cin >> gen;
+		
+		switch (gen){
+			case(0):
+				vacuna = false;
+				break;
+			case(1):
+				vacuna = true;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
+		
+	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
+		agregarMascota(ci, ultraperro);
+	
+		return;
+	
+	}
+	
+	if (pog == 1){
+		string nombreMascota;
+		Genero genero;
+		float peso;
+		TipoPelo pelo;
+		cout << "Nombre de la mascota: ";
+		cin >> nombreMascota;
+		cout << "Genero de la mascota: " << endl;
+		cout << "Si es Macho,  ingrese->0 " << endl;
+		cout << "Si es Hembra, ingrese->1 " << endl;
+		cin >> gen;
+		
+		switch (gen){
+			case(0):
+				genero = Macho;
+				break;
+			case(1):
+				genero = Hembra;
+				break;
+			default:
+				throw std::invalid_argument("datos ilegaes");
+		}
+		
+		cout << "Peso de la mascota: ";
+		cin >> peso;
+		cout << "Pelo de la mascota: "<< endl;
+		cout << "Si es Corto,   ingrese->0 " << endl;
+		cout << "Si es Mediano, ingrese->1 " << endl;
+		cout << "Si es Largo,   ingrese->2 " << endl;
+		cin >> gen;
+		
+		switch (gen){
+			case(0):
+				pelo = Corto;
+				break;
+			case(1):
+				pelo = Mediano;
+				break;
+			case(2):
+				pelo = Largo;
+				break;
+			default:
+				throw std::invalid_argument("dato incorrecto");
+		}
+		
+				
+		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
+		agregarMascota(ci, ultragato);
+		return;
+	
+	}	
+	
+	
+	
+}
 
+
+
+
+
+void agregarMascota(string ci, const DtMascota& dtMascota){
+	
+	
+
+
+
+}
 
