@@ -109,7 +109,8 @@ cout << endl << "fin zona de pruebas" << endl << endl;
 
 
             }
-            else if (command == "finalizarRelacionLaboral") {
+            else if (command == "4") {
+            	verConsultas();
 
 
             }
@@ -589,9 +590,17 @@ void verConsultas(){
 	Socio* x = checkCi(ci);
 	if (x == NULL)
 		throw std::invalid_argument("no existe ci");
-
-	for (int i=0; i<x->GetCantConsu(); i++)
-		cout << x->consu[i]->GetMotivo() << endl;
 	
+	int canti = x->GetCantConsu();
+	cout << canti  << "sssss" << endl;
+	
+
+	Consulta* m = x->consu;
+	cout << m[0]->GetMotivo()  << "sssss" << endl;
+	
+//	for (int i=0; i < canti; i++){
+//	
+//		cout << m[i]->GetMotivo() << endl;
+//	}
 	
 }

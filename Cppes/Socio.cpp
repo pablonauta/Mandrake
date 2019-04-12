@@ -10,8 +10,10 @@ Socio::Socio(string ci, string nombre, const DtFecha& fecha) : fechaIngreso(fech
 }
 
 void Socio::AgregarConsulta(Consulta* x){
-	for (int i=0; i < this->cantConsu; i++)
-	this->consu[i] = x;
+	for (int i=0; i < this->cantConsu; i++){
+		this->consu[i] = x;
+	}
+	
 	this->cantConsu++;
 }
 
