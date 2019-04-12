@@ -342,15 +342,12 @@ void preSocio(){
 		
 				
 		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
-		//ultragato.SetSoy_un('g');
+	
 	
 		registrarSocio(ci, nombre, ultragato);
 		return;
 	
-	}
-
-
-	
+	}	
 	
 }
 
@@ -375,13 +372,25 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	DtPerro* toga = dynamic_cast<DtPerro*>(cat);
 
 	if (toga){
-		cout << "bo, soy un maldito perro!";
+		cout << "bo, soy un maldito perro!" << endl;
+
+		socios[cantidadSocios]->AgregarMascota(new Perro(toga->getNombre(), 
+						     							toga->getGenero(), 
+														toga->getPeso(), 
+														toga->getRaza(), 
+														toga->getVacunaCachorro()));
+	
 	}
 	else{
-		cout << "bo, soy un maldito gato!";
-	}
+		cout << "bo, soy un maldito gato!" << endl;
+		DtGato* gat = (DtGato*)cat;
+		socios[cantidadSocios]->AgregarMascota(new Gato(gat->getNombre(), 
+														gat->getGenero(), 
+														gat->getPeso(), 
+														gat->getPelo()));
+	}		
 		
-
+	cantidadSocios++;
 }
 
 
