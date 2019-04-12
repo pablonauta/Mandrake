@@ -23,6 +23,8 @@ const int MAX_MASCOTA = 10;
 Socio** socios = new Socio* [MAX_SOCIOS];
 int cantidadSocios = 0;
 
+void listarSocios();
+
 void preSocio();
 // Le da forma al socio
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota);
@@ -62,66 +64,11 @@ int main(int argc, char** argv) {
 
 
 	
-//	DtMascota* x = new DtGato("Mishu", Macho, 40, Corto);
-//	DtMascota* f = new DtPerro("Sultan", Macho, 60, labrador, true);
-//	
-//	cout << x->getNombre() << endl;
-//	cout << x->getPeso() << endl;
-//	x->setPeso(45);
-//	cout << x->getPeso() << endl;
-//	
-//	cout << f->getNombre() << endl;
-//	cout << f->getPeso() << endl;
-//	f->setPeso(25);
-//	cout << f->getPeso() << endl;
-//	
-//	DtFecha hoy = DtFecha(7,4,2019);
-//	cout << "hoy es: " << hoy.getDia() << "-" << hoy.getMes() << "-" << hoy.getAnio() << endl;
-//	DtConsulta* consu = new DtConsulta(hoy, "Mordio un humano");
-//	cout << "Motivo de consulta: " << consu->getMotivo() << endl;
-//	cout << "El dia: " << consu->getFecha().getDia() << "-";
-//	cout << consu->getFecha().getMes() << "-";
-//	cout << consu->getFecha().getAnio() <<  endl; 
-//	hoy = DtFecha(5,4,1998);
-//	Socio* socio = new Socio("88888", "Papblo", hoy);
-//	cout << socio->GetNombre() << endl;
-//	cout << socio->GetCi() << endl;
-//	socio->SetNombre("Pabloss");	
-//	socio->SetCi("99999");
-//	cout << socio->GetNombre() << endl;
-//	cout << socio->GetCi() << endl;
-//	cout << "Fecha de Ingreso: ";
-//	cout << socio->GetFecha().getDia() << "-";
-//	cout << socio->GetFecha().getMes() << "-";
-//	cout << socio->GetFecha().getAnio() << endl;
-//	Mascota* xs = new Gato("Piruja", Hembra, 120, Corto);
-//	Mascota* sx = new Perro("Rope", Macho, 19, labrador, true);
-//	cout << xs->GetNombre() << endl;
-//	cout << xs->GetPeso() << endl;
-//	cout << xs->GetGenero() << endl;
-//	cout << sx->GetNombre() << endl;
-//	cout << sx->GetPeso() << endl;
-//	cout << sx->GetGenero() << endl;
-//	
-//	for (int i=0; i<MAX_SOCIOS; i++)
-//			socios[i] = new Socio( "5555", "pepe", hoy);
-//			
-//	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
-//	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
-//	socios[0]->AgregarMascota(xs);
-//	socios[0]->AgregarMascota(sx);	
-//	socios[0]->AgregarMascota(sx);
-//	Consulta* erre = new Consulta(hoy, "cualquier cosa");
-//	socios[0]->AgregarConsulta(erre);
-//	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
-//	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
-//	char output[10];
+
 
     
 
-			
-//	for (int i=0; i<MAX_SOCIOS; i++)
-//		cout <<	socios[i]->GetNombre() << endl;
+
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -133,7 +80,7 @@ cout << endl << "fin zona de pruebas" << endl << endl;
     cout << "2 - Agregar Mascota " << endl;
 	cout << "3 - Ingresar Consulta " << endl;   
 	cout << "4 - Ver Consulta antes de fecha" << endl;
-	cout << "5 - Ver Consulta antes de fecha" << endl;
+	cout << "5 - Listar socios" << endl;
 	cout << "6 - Obtener mascotas" << endl;
 	cout << "0 - Salir" << endl;
     string command;
@@ -154,7 +101,8 @@ cout << endl << "fin zona de pruebas" << endl << endl;
                 
                 
             }
-            else if (command == "listarEmpleados") {
+            else if (command == "5") {
+            	listarSocios();
 
 
             }
@@ -401,10 +349,17 @@ void preDtMascota(){
 	cin >> ci;
 	
 	// revisar si existe la cedula
-	if (checkCi(ci) == NULL)
+	
+	Socio* x = checkCi(ci);
+	
+	if (x == NULL)
 		throw std::invalid_argument("el socio no existe");
 	
 	// revisar el limite de mascotas
+	
+	if (x->GetCantMasco() == x->GetMAX_MASCOTAS())
+		throw std::invalid_argument(" lleno de mascotas");
+	
 	
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
 	cout << "           si es Gato-->ingrese 1 : ";
@@ -541,7 +496,6 @@ void preDtMascota(){
 	
 }
 
-
 Socio* checkCi(string ci){
 	
 	for (int i=0; i<cantidadSocios; i++){
@@ -580,4 +534,18 @@ void agregarMascota(string ci, const DtMascota& dtMascota){
 	
 
 }
+
+void listarSocios(){
+	if (cantidadSocios == 0){
+		cout << "no hay socios" << endl;
+		return;
+	}
+	
+	for (int i = 0; i < cantidadSocios; i++){
+		cout << socios[i]->GetCi() << endl;
+		cout << socios[i]->GetNombre() << endl;
+		cout << "***************************" << endl;
+	}
+}
+
 

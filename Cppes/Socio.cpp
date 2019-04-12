@@ -15,6 +15,14 @@ void Socio::AgregarConsulta(Consulta* x){
 	this->cantConsu++;
 }
 
+int Socio::GetMAX_MASCOTAS(){
+	return this->MAX_MASCOTAS;	
+}
+
+int Socio::GetMAX_CONSULTAS(){
+	return this->MAX_CONSULTAS;
+}
+
 void Socio::AgregarMascota(Mascota* f){
 	for (int i=0; i < this->cantMasco; i++)
 	this->masco[i] = f;
@@ -33,6 +41,11 @@ string Socio::GetNombre() const{
 	return this->nombre;
 }
 
+int Socio::GetCantMasco(){
+	return this->cantMasco;
+
+}
+
 void Socio::SetCi(string ci){
 	this->ci = ci;
 }
@@ -49,9 +62,6 @@ int Socio::GetCantConsu(){
 	return this->cantConsu;
 }
 
-int Socio::GetCantMasco(){
-	return this->cantMasco;
-}
 Socio::~Socio(){
 	delete this->masco;
 	delete this->consu;

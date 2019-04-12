@@ -19,7 +19,9 @@ class Socio {
 		int cantConsu;
 	
 	public:
-		int CantMascotas;
+	
+		int GetMAX_MASCOTAS();
+		int GetMAX_CONSULTAS();
 		Socio(string ci, string nombre, const DtFecha& fecha);
 		string GetCi() const;
 		string GetNombre() const;
