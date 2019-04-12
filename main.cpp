@@ -148,7 +148,7 @@ cout << endl << "fin zona de pruebas" << endl << endl;
 				preSocio();
 				
             }
-            else if (command == "1") {
+            else if (command == "2") {
             	cout << "Agregando mascota..." << endl << flush;
                 preDtMascota();
                 
@@ -547,7 +547,7 @@ Socio* checkCi(string ci){
 	
 	for (int i=0; i<cantidadSocios; i++){
 		if (socios[i]->GetCi() == ci){
-			return socios[cantidadSocios];			
+			return socios[i];			
 		}
 	}
 	return NULL;
