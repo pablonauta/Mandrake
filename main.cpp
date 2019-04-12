@@ -28,6 +28,9 @@ void preSocio();
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota);
 // Registra un socio con su mascota. El valor el atributo racionDiaria se debe setear en 0.
 void preDtMascota();
+// le da forma a mascota
+Socio* checkCi(string ci);
+//trae el socio si existe
 void agregarMascota(string ci, const DtMascota& dtMascota);
 // Agrega una nueva mascota a un socio ya registrado. 
 // Si no existe un socio registrado con esa cédula, se
@@ -59,66 +62,66 @@ int main(int argc, char** argv) {
 
 
 	
-	DtMascota* x = new DtGato("Mishu", Macho, 40, Corto);
-	DtMascota* f = new DtPerro("Sultan", Macho, 60, labrador, true);
-	
-	cout << x->getNombre() << endl;
-	cout << x->getPeso() << endl;
-	x->setPeso(45);
-	cout << x->getPeso() << endl;
-	
-	cout << f->getNombre() << endl;
-	cout << f->getPeso() << endl;
-	f->setPeso(25);
-	cout << f->getPeso() << endl;
-	
-	DtFecha hoy = DtFecha(7,4,2019);
-	cout << "hoy es: " << hoy.getDia() << "-" << hoy.getMes() << "-" << hoy.getAnio() << endl;
-	DtConsulta* consu = new DtConsulta(hoy, "Mordio un humano");
-	cout << "Motivo de consulta: " << consu->getMotivo() << endl;
-	cout << "El dia: " << consu->getFecha().getDia() << "-";
-	cout << consu->getFecha().getMes() << "-";
-	cout << consu->getFecha().getAnio() <<  endl; 
-	hoy = DtFecha(5,4,1998);
-	Socio* socio = new Socio("88888", "Papblo", hoy);
-	cout << socio->GetNombre() << endl;
-	cout << socio->GetCi() << endl;
-	socio->SetNombre("Pabloss");	
-	socio->SetCi("99999");
-	cout << socio->GetNombre() << endl;
-	cout << socio->GetCi() << endl;
-	cout << "Fecha de Ingreso: ";
-	cout << socio->GetFecha().getDia() << "-";
-	cout << socio->GetFecha().getMes() << "-";
-	cout << socio->GetFecha().getAnio() << endl;
-	Mascota* xs = new Gato("Piruja", Hembra, 120, Corto);
-	Mascota* sx = new Perro("Rope", Macho, 19, labrador, true);
-	cout << xs->GetNombre() << endl;
-	cout << xs->GetPeso() << endl;
-	cout << xs->GetGenero() << endl;
-	cout << sx->GetNombre() << endl;
-	cout << sx->GetPeso() << endl;
-	cout << sx->GetGenero() << endl;
-	
-	for (int i=0; i<MAX_SOCIOS; i++)
-			socios[i] = new Socio( "5555", "pepe", hoy);
-			
-	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
-	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
-	socios[0]->AgregarMascota(xs);
-	socios[0]->AgregarMascota(sx);	
-	socios[0]->AgregarMascota(sx);
-	Consulta* erre = new Consulta(hoy, "cualquier cosa");
-	socios[0]->AgregarConsulta(erre);
-	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
-	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
-	char output[10];
+//	DtMascota* x = new DtGato("Mishu", Macho, 40, Corto);
+//	DtMascota* f = new DtPerro("Sultan", Macho, 60, labrador, true);
+//	
+//	cout << x->getNombre() << endl;
+//	cout << x->getPeso() << endl;
+//	x->setPeso(45);
+//	cout << x->getPeso() << endl;
+//	
+//	cout << f->getNombre() << endl;
+//	cout << f->getPeso() << endl;
+//	f->setPeso(25);
+//	cout << f->getPeso() << endl;
+//	
+//	DtFecha hoy = DtFecha(7,4,2019);
+//	cout << "hoy es: " << hoy.getDia() << "-" << hoy.getMes() << "-" << hoy.getAnio() << endl;
+//	DtConsulta* consu = new DtConsulta(hoy, "Mordio un humano");
+//	cout << "Motivo de consulta: " << consu->getMotivo() << endl;
+//	cout << "El dia: " << consu->getFecha().getDia() << "-";
+//	cout << consu->getFecha().getMes() << "-";
+//	cout << consu->getFecha().getAnio() <<  endl; 
+//	hoy = DtFecha(5,4,1998);
+//	Socio* socio = new Socio("88888", "Papblo", hoy);
+//	cout << socio->GetNombre() << endl;
+//	cout << socio->GetCi() << endl;
+//	socio->SetNombre("Pabloss");	
+//	socio->SetCi("99999");
+//	cout << socio->GetNombre() << endl;
+//	cout << socio->GetCi() << endl;
+//	cout << "Fecha de Ingreso: ";
+//	cout << socio->GetFecha().getDia() << "-";
+//	cout << socio->GetFecha().getMes() << "-";
+//	cout << socio->GetFecha().getAnio() << endl;
+//	Mascota* xs = new Gato("Piruja", Hembra, 120, Corto);
+//	Mascota* sx = new Perro("Rope", Macho, 19, labrador, true);
+//	cout << xs->GetNombre() << endl;
+//	cout << xs->GetPeso() << endl;
+//	cout << xs->GetGenero() << endl;
+//	cout << sx->GetNombre() << endl;
+//	cout << sx->GetPeso() << endl;
+//	cout << sx->GetGenero() << endl;
+//	
+//	for (int i=0; i<MAX_SOCIOS; i++)
+//			socios[i] = new Socio( "5555", "pepe", hoy);
+//			
+//	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
+//	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
+//	socios[0]->AgregarMascota(xs);
+//	socios[0]->AgregarMascota(sx);	
+//	socios[0]->AgregarMascota(sx);
+//	Consulta* erre = new Consulta(hoy, "cualquier cosa");
+//	socios[0]->AgregarConsulta(erre);
+//	cout << "Mascotas: " << socios[0]->GetCantMasco() << endl;
+//	cout << "Consultas: " << socios[0]->GetCantConsu() << endl;
+//	char output[10];
 
     
 
 			
-	for (int i=0; i<MAX_SOCIOS; i++)
-		cout <<	socios[i]->GetNombre() << endl;
+//	for (int i=0; i<MAX_SOCIOS; i++)
+//		cout <<	socios[i]->GetNombre() << endl;
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -206,6 +209,9 @@ void preSocio(){
 	fflush(stdin);
 	cin >> ci;
 	// reivsar ci repetida
+	if (checkCi(ci) != NULL)
+		throw std::invalid_argument("el socio ya existe");
+		
 	cout << "nombre: ";
 	cin >> nombre;
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
@@ -279,14 +285,12 @@ void preSocio(){
 				vacuna = true;
 				break;
 			default:
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument("vacuna ilegal");
 		}
 		
 	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
-		//ultraperro.SetSoy_un('p');
-		registrarSocio(ci, nombre, ultraperro);
-	
-		return;
+	registrarSocio(ci, nombre, ultraperro);
+	return;
 	
 	}
 	
@@ -383,6 +387,7 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 														gat->getPelo()));
 	}		
 		
+	cout << socios[cantidadSocios]->GetCi() << " <- ci bo" << endl;
 	cantidadSocios++;
 }
 
@@ -394,6 +399,9 @@ void preDtMascota(){
 	cin >> ci;
 	
 	// revisar si existe la cedula
+	if (checkCi(ci) == NULL)
+		throw std::invalid_argument("el socio no existe");
+	
 	// revisar el limite de mascotas
 	
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
@@ -521,7 +529,6 @@ void preDtMascota(){
 			default:
 				throw std::invalid_argument("dato incorrecto");
 		}
-		
 				
 		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
 		agregarMascota(ci, ultragato);
@@ -534,7 +541,15 @@ void preDtMascota(){
 }
 
 
-
+Socio* checkCi(string ci){
+	
+	for (int i=0; i<cantidadSocios; i++){
+		if (socios[cantidadSocios]->GetCi() == ci){
+			return socios[cantidadSocios];			
+		}
+	}
+	return NULL;
+}
 
 
 void agregarMascota(string ci, const DtMascota& dtMascota){
