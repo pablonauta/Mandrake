@@ -315,7 +315,7 @@ void preSocio(){
 				genero = Hembra;
 				break;
 			default:
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument("datos ilegaes");
 		}
 		
 		cout << "Peso de la mascota: ";
@@ -337,7 +337,7 @@ void preSocio(){
 				pelo = Largo;
 				break;
 			default:
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument("dato incorrecto");
 		}
 		
 				
@@ -359,41 +359,31 @@ void preSocio(){
 
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	int dia,mes, anio;
+	cout << " Fecha de ingreso ";
 	cout << "Ingrese dia: ";
 	cin >> dia;
 	cout << "Ingrese mes: ";
 	cin >> mes;
 	cout << "Ingrese anio: ";
 	cin >> anio;
+//hay que revisar la fecha valida;
+	
 	DtFecha fecha = DtFecha(dia, mes, anio);
+	
 	socios[cantidadSocios] = new Socio(ci, nombre, fecha);
 	
-//	DtMascota* dogcat;
-//	DtGato* mascota = dynamic_cast<DtGato*>(dogcat);
-    //const DtGato* der = dynamic_cast<const DtGato*>(dtMascota);
-//  
-//    if (mascota) {
-////        socios[cantidadSocios].AgregarMascota() = new Gato(dtMascota.nombre, dtMacosta.genero, dtMascota.peso, dtMascota.pelo);
-//    }
-//    else {
-////       
-////        
-//    }
+	if (dtMascota.getSoy_un() == 'g'){
+		cout << "soy un gato muñaño!" << endl;
+		return;
+		
+	}
 	
-	
-	
-//	string cedula;
-//	string nombreCliente;
-//	int pog;
-//	cout << "ci: ";
-//	cin >> cedula;
-//	// reivsar ci repetida
-//	cout << "nombre: ";
-//	system("pause");
-//	cin >> nombreCliente;
-//	cout << "Si la mascota es perro ingrese 0, si es gato ingrese 1 :";
-//	cin >> pog;
-//	
+	if (dtMascota.getSoy_un() == 'p'){
+		cout << "soy un boludo!" << endl;
+		return;
+		
+	}
+
 		
 
 }
