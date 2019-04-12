@@ -278,10 +278,10 @@ void preSocio(){
 		
 		switch (gen){
 			case(0):
-				raza = labrador;
+				vacuna = false;
 				break;
 			case(1):
-				raza = ovejero;
+				vacuna = true;
 				break;
 			default:
 				throw std::invalid_argument("Error en los datos ingresados al sistema");
@@ -359,7 +359,7 @@ void preSocio(){
 
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	int dia,mes, anio;
-	cout << " Fecha de ingreso ";
+	cout << " Fecha de ingreso " << endl;
 	cout << "Ingrese dia: ";
 	cin >> dia;
 	cout << "Ingrese mes: ";
@@ -372,9 +372,20 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	
 	socios[cantidadSocios] = new Socio(ci, nombre, fecha);
 	
-	if (dtMascota.getSoy_un() == 'g'){
-		cout << "soy un gato muñaño!" << endl;
-		return;
+	DtMascota* cat;
+
+	cat = const_cast<DtMascota*>(&dtMascota);
+
+	cout << cat->getNombre() << endl;
+	
+	DtPerro* toga = dynamic_cast<DtPerro*>(cat);
+	
+	
+
+	if (toga){
+		cout << "bo, soy un maldito perro!";
+		
+		
 		
 	}
 	

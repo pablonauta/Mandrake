@@ -28,6 +28,7 @@ class DtMascota  {
 		void SetRacionDiaria(float racionDiaria);
 		void SetSoy_un(char x);
 		DtMascota(string nombre, Genero genero, float peso);
+		virtual void trolomorfo() = 0;
 		virtual ~DtMascota();
 		
 };

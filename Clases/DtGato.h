@@ -15,7 +15,8 @@ class DtGato : public DtMascota {
 		TipoPelo getPelo();
 		void setTipoPelo(TipoPelo pelo);
 		DtGato(string nombre, Genero genero, float peso, TipoPelo pelo);
-		~DtGato();
+		void trolomorfo();
+		virtual ~DtGato();
 };
 
 #endif 

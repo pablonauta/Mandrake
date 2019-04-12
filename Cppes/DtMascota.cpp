@@ -12,6 +12,9 @@ char DtMascota::getSoy_un() const{
 	return this->soy_un;
 }
 
+void DtMascota::trolomorfo(){
+}
+
 Genero DtMascota::getGenero() const{
 	return this->genero;
 }

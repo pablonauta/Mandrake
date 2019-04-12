@@ -5,6 +5,10 @@ Gato::Gato(string nombre, Genero genero, float peso, TipoPelo pelo)
 	this->pelo = pelo;	
 }
 
+TipoPelo Gato::getPelo(){
+	return this->pelo;
+}
+
 Gato::~Gato(){
 
 }

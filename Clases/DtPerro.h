@@ -16,7 +16,8 @@ class DtPerro : public DtMascota {
 		void setRazaperoo(RazaPerro raza);
 		void setVacunaCachorro(bool vacuna);
 		DtPerro(string nombre, Genero genero, float peso, RazaPerro raza, bool vacuna);
-		~DtPerro();
+		void trolomorfo();
+		virtual ~DtPerro();
 };
 
 #endif 

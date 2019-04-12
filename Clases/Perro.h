@@ -13,7 +13,7 @@ class Perro : public Mascota {
 		
 	public:
 		Perro(string nombre, Genero genero, float peso, RazaPerro raza, bool vacuna);
-		~Perro();
+		virtual ~Perro();
 	
 	
 };

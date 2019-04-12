@@ -7,6 +7,9 @@ DtGato::DtGato(string nombre, Genero genero, float peso, TipoPelo pelo)
 	this->pelo = pelo;
 }
 
+void DtGato::trolomorfo(){
+
+}
 
 TipoPelo DtGato::getPelo(){
 	return this->pelo;

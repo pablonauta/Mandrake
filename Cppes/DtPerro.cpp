@@ -9,6 +9,9 @@ DtMascota(nombre, genero, peso){
 	this->vacunaCachorro;
 }
 
+void DtPerro::trolomorfo(){
+}
+
 RazaPerro DtPerro::getRaza() const{
 	return this->razaperro;
 }
