@@ -190,9 +190,9 @@ cout << endl << "fin zona de pruebas" << endl << endl;
 }
 
 void preSocio(){
-	if (cantidadSocios == MAX_SOCIOS) {
+	if (cantidadSocios == MAX_SOCIOS) 
 		throw std::invalid_argument("No se pueden agregar mas socios");
-	}
+	
 	int gen;
 	string ci;
 	string nombre;
@@ -261,8 +261,21 @@ void preSocio(){
 				throw std::invalid_argument("Error en los datos ingresados al sistema");
 		}
 		
-		cout << "Vacuna de la mascota: ";
-		cin >> nombreMascota;
+		cout << "Vacuna de la mascota: " << endl;
+		cout << "Sin vacuna ingrese-> 0 " << endl;
+		cout << "Con vacuna ingrese-> 1 " << endl;
+		cin >> gen;
+		
+		switch (gen){
+			case(0):
+				raza = labrador;
+				break;
+			case(1):
+				raza = ovejero;
+				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
+		}
 		
 		DtMascota ultraperro = DtPerro(nombreMascota, genero, peso, raza, vacuna);
 		ultraperro.SetSoy_un('p');
@@ -274,7 +287,6 @@ void preSocio(){
 	
 	if (pog == 1){
 		string nombreMascota;
-		
 		Genero genero;
 		float peso;
 		TipoPelo pelo;
@@ -284,6 +296,7 @@ void preSocio(){
 		cout << "Si es Macho,  ingrese->0 " << endl;
 		cout << "Si es Hembra, ingrese->1 " << endl;
 		cin >> gen;
+		
 		switch (gen){
 			case(0):
 				genero = Macho;
@@ -291,6 +304,8 @@ void preSocio(){
 			case(1):
 				genero = Hembra;
 				break;
+			default:
+				throw std::invalid_argument("Error en los datos ingresados al sistema");
 		}
 		
 		cout << "Peso de la mascota: ";
