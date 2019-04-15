@@ -540,8 +540,8 @@ void listarSocios(){
 	
 	for (int i = 0; i < cantidadSocios; i++){
 		cout << "CI: " << socios[i]->GetCi() << endl;
-		cout << "Nombre:" << socios[i]->GetNombre() << endl;
-		cout << socios[i]->GetFecha();
+		cout << "Nombre: " << socios[i]->GetNombre() << endl;
+		cout << "Fecha de Ingreso: " << socios[i]->GetFecha();
 		cout << "***************************" << endl;
 	}
 }

@@ -36,6 +36,6 @@ DtFecha::~DtFecha(){
 }
 
 std::ostream& operator<<(std::ostream &o, const DtFecha& f) {
-    o << "Fecha de Ingreso: " << f.getDia() <<  "/" << f.getMes() << "/" << f.getAnio() << std::endl;
+    o << f.getDia() <<  "/" << f.getMes() << "/" << f.getAnio() << std::endl;
     return o;
 }
