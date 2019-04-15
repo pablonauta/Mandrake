@@ -69,6 +69,10 @@ DtGato legato = DtGato("Pocho", Macho, 120, Corto);
 DtFecha hoy = DtFecha(10,10,10);
 socios[0] = new Socio("1", "juan", hoy);
 cantidadSocios++;
+legato = DtGato("Cholo", Macho, 150, Corto);
+hoy = DtFecha(20,30,40);
+socios[1] = new Socio("2", "Alberto", hoy);
+cantidadSocios++;
 
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
@@ -96,6 +100,7 @@ cout << endl << "fin zona de pruebas" << endl << endl;
             }
             else if (command == "6") {
             	cout << "Lista de socios..." << endl;
+            	cout << "***************************" << endl;
             	listarSocios();
 
 
@@ -534,8 +539,8 @@ void listarSocios(){
 	}
 	
 	for (int i = 0; i < cantidadSocios; i++){
-		cout << socios[i]->GetCi() << endl;
-		cout << socios[i]->GetNombre() << endl;
+		cout << "CI: " << socios[i]->GetCi() << endl;
+		cout << "Nombre:" << socios[i]->GetNombre() << endl;
 		cout << socios[i]->GetFecha();
 		cout << "***************************" << endl;
 	}
