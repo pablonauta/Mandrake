@@ -24,7 +24,8 @@ Socio** socios = new Socio* [MAX_SOCIOS];
 int cantidadSocios = 0;
 
 void listarSocios();
-
+//...
+void mostrarMenu();
 void preSocio();
 // Le da forma al socio
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota);
@@ -64,21 +65,17 @@ int main(int argc, char** argv) {
 // zona de pruebas x 
 cout << "zona de pruebas" << endl << endl; 
 
+DtGato legato = DtGato("Pocho", Macho, 120, Corto);
+DtFecha hoy = DtFecha(10,10,10);
+socios[0] = new Socio("1", "juan", hoy);
+cantidadSocios++;
+
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
 					
     
-    cout << "Bienvenido al sistema" << endl;
-    cout << "Presentamos el Main System One" << endl;
-    cout << "1 - Registar Socio " << endl;
-    cout << "2 - Agregar Mascota " << endl;
-	cout << "3 - Ingresar Consulta " << endl;   
-	cout << "4 - Ver Consultas" << endl;
-	cout << "5 - Ver Consulta antes de fecha" << endl;
-	cout << "6 - Listar socios" << endl;
-	cout << "7 - Obtener mascotas" << endl;
-	cout << "0 - Salir" << endl;
+    mostrarMenu();
     string command;
     cout << ">";
     cin >> command;
@@ -97,8 +94,8 @@ cout << endl << "fin zona de pruebas" << endl << endl;
                 
                 
             }
-            else if (command == "5") {
-            	
+            else if (command == "6") {
+            	cout << "Lista de socios..." << endl;
             	listarSocios();
 
 
@@ -122,19 +119,14 @@ cout << endl << "fin zona de pruebas" << endl << endl;
                 throw std::invalid_argument("Comando no reconocido");
             }
             
+            mostrarMenu();
             cout << "Comando ejecutado correctamente" << endl;
         }
         catch(std::invalid_argument &ia) {
-            cout << "Error: " << ia.what() << endl;
+        	mostrarMenu();
+			cout << "Error: " << ia.what() << endl;
             //efecto refresco de menu...
-            cout << "*******************************" << endl;
-		    cout << "1 - Registar Socio " << endl;
-		    cout << "2 - Agregar Mascota " << endl;
-			cout << "3 - Ingresar Consulta " << endl;   
-			cout << "4 - Ver Consulta antes de fecha" << endl;
-			cout << "5 - Ver Consulta antes de fecha" << endl;
-			cout << "6 - Obtener mascotas" << endl;
-			cout << "0 - Salir" << endl;
+		   
         }
         
         cout << ">";
@@ -168,7 +160,7 @@ void preSocio(){
 	cout << "           si es Gato-->ingrese 1 : ";
 	cin >> pog;
 	if (pog != 0 && pog != 1)
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument(" en los datos ingresados al sistema");
 	
 	if (pog == 0){
 		string nombreMascota;
@@ -190,7 +182,7 @@ void preSocio(){
 				genero = Hembra;
 				break;
 			default:
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument(" en los datos ingresados al sistema");
 		}
 		cout << "Peso de la mascota: " << endl;
 		cin >> peso;
@@ -235,7 +227,7 @@ void preSocio(){
 				vacuna = true;
 				break;
 			default:
-				throw std::invalid_argument("vacuna ilegal");
+				throw std::invalid_argument(" vacuna ilegal");
 		}
 		
 	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
@@ -264,12 +256,12 @@ void preSocio(){
 				genero = Hembra;
 				break;
 			default:
-				throw std::invalid_argument("datos ilegaes");
+				throw std::invalid_argument(" datos ilegaes");
 		}
 		
 		cout << "Peso de la mascota: ";
 		cin >> peso;
-		cout << "Pelo de la mascota: "<< endl;
+		cout << "Pelo de la mascota: " << endl;
 		cout << "Si es Corto,   ingrese->0 " << endl;
 		cout << "Si es Mediano, ingrese->1 " << endl;
 		cout << "Si es Largo,   ingrese->2 " << endl;
@@ -302,7 +294,7 @@ void preSocio(){
 
 
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
-	int dia,mes, anio;
+	int dia, mes, anio;
 	cout << " Fecha de ingreso " << endl;
 	cout << "Ingrese dia: ";
 	cin >> dia;
@@ -310,6 +302,7 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	cin >> mes;
 	cout << "Ingrese anio: ";
 	cin >> anio;
+
 //hay que revisar la fecha valida;
 	
 	DtFecha fecha = DtFecha(dia, mes, anio);
@@ -353,7 +346,7 @@ void preDtMascota(){
 	Socio* x = checkCi(ci);
 	
 	if (x == NULL)
-		throw std::invalid_argument("el socio no existe");
+		throw std::invalid_argument(" el socio no existe");
 	
 	// revisar el limite de mascotas
 	
@@ -365,7 +358,7 @@ void preDtMascota(){
 	cout << "           si es Gato-->ingrese 1 : ";
 	cin >> pog;
 	if (pog != 0 && pog != 1)
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument(" en los datos ingresados al sistema");
 	
 	if (pog == 0){
 		string nombreMascota;
@@ -416,7 +409,7 @@ void preDtMascota(){
 				raza = otro;
 				break;
 			default:
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument(" en los datos ingresados al sistema");
 		}
 		
 		cout << "Vacuna de la mascota: " << endl;
@@ -436,9 +429,8 @@ void preDtMascota(){
 		}
 		
 	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
-		agregarMascota(ci, ultraperro);
-	
-		return;
+	agregarMascota(ci, ultraperro);
+	return;
 	
 	}
 	
@@ -462,7 +454,7 @@ void preDtMascota(){
 				genero = Hembra;
 				break;
 			default:
-				throw std::invalid_argument("datos ilegaes");
+				throw std::invalid_argument(" datos ilegaes");
 		}
 		
 		cout << "Peso de la mascota: ";
@@ -544,6 +536,7 @@ void listarSocios(){
 	for (int i = 0; i < cantidadSocios; i++){
 		cout << socios[i]->GetCi() << endl;
 		cout << socios[i]->GetNombre() << endl;
+		cout << socios[i]->GetFecha();
 		cout << "***************************" << endl;
 	}
 }
@@ -595,12 +588,28 @@ void verConsultas(){
 	cout << canti  << "sssss" << endl;
 	
 
-	Consulta* m = x->consu;
-	cout << m[0]->GetMotivo()  << "sssss" << endl;
+	//Consulta* m = x->consu;
+	//cout << x[0].GetMotivo()  << "sssss" << endl;
 	
 //	for (int i=0; i < canti; i++){
 //	
 //		cout << m[i]->GetMotivo() << endl;
 //	}
+	
+}
+
+void mostrarMenu(){
+	
+	cout << "Bienvenido al sistema" << endl;
+    cout << "Presentamos el Main System Chu" << endl;
+    cout << "1 - Registar Socio " << endl;
+    cout << "2 - Agregar Mascota " << endl;
+	cout << "3 - Ingresar Consulta " << endl;   
+	cout << "4 - Ver Consultas" << endl;
+	cout << "5 - Ver Consulta antes de fecha" << endl;
+	cout << "6 - Listar socios" << endl;
+	cout << "7 - Obtener mascotas" << endl;
+	cout << "0 - Salir" << endl;
+	
 	
 }
