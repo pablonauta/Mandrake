@@ -587,10 +587,10 @@ void verConsultas(){
 	cin >> ci;
 	Socio* x = checkCi(ci);
 	if (x == NULL)
-		throw std::invalid_argument("no existe ci");
+		throw std::invalid_argument(" no existe ci");
 	
 	int canti = x->GetCantConsu();
-	cout << canti  << "sssss" << endl;
+	cout << canti  << " consultas" << endl;
 	
 
 	//Consulta* m = x->consu;
