@@ -12,6 +12,7 @@ class Perro : public Mascota {
 		bool vacuna;
 		
 	public:
+		DtMascota* getDtMascota();
 		Perro(string nombre, Genero genero, float peso, RazaPerro raza, bool vacuna);
 		virtual ~Perro();
 	

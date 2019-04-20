@@ -1,7 +1,7 @@
 #ifndef DTGATO_H
 #define DTGATO_H
 
-
+#include <ostream>
 #include "../Clases/DtMascota.h"
 #include "../Clases/TipoPelo.h"
 

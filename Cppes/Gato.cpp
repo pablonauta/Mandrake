@@ -9,6 +9,10 @@ TipoPelo Gato::getPelo(){
 	return this->pelo;
 }
 
+DtMascota* Gato::getDtMascota(){
+	cout << "mando gato";
+}
+
 Gato::~Gato(){
 
 }
