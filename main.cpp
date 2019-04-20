@@ -385,7 +385,7 @@ void preDtMascota(){
 				genero = Hembra;
 				break;
 			default:
-				throw std::invalid_argument("Error en los datos ingresados al sistema");
+				throw std::invalid_argument(" en los datos ingresados al sistema");
 		}
 		cout << "Peso de la mascota: " << endl;
 		cin >> peso;
@@ -552,10 +552,10 @@ void preConsulta(){
 	cin >> ci;
 	Socio* x = checkCi(ci);
 	if (x == NULL)
-		throw std::invalid_argument("no existe ci");
+		throw std::invalid_argument(" no existe ci");
 		
 	if (x->GetMAX_CONSULTAS() == x->GetCantConsu())
-		throw std::invalid_argument("lleno de consultas");
+		throw std::invalid_argument(" lleno de consultas");
 	
 	string moti;
 	cout << "Motivo: ";

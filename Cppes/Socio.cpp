@@ -27,6 +27,10 @@ void Socio::AgregarMascota(Mascota* f){
 	this->cantMasco++;
 }
 
+Consulta** Socio::GetConsultas(){
+	return this->consu;
+}
+
 string Socio::GetCi() const{
 	return this->ci;
 }

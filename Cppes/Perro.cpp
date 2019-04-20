@@ -6,8 +6,20 @@ Perro::Perro(string nombre, Genero genero, float peso, RazaPerro raza, bool vacu
 	this->vacuna = vacuna;	
 }
 
-DtMascota Perro::getDtMascota(){
-	cout << "mando perro";
+RazaPerro Perro::GetRaza(){
+	return this->raza;
+}
+
+bool Perro::GetVacuna(){
+	return this->vacuna;
+}
+
+DtMascota* Perro::getDtMascota(){
+	return new DtPerro(this->GetNombre(),
+						this->GetGenero(),
+						this->GetPeso(),
+						this->GetRaza(),
+						this->GetVacuna());
 }
 
 Perro::~Perro(){

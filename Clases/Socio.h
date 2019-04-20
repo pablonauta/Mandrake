@@ -32,7 +32,9 @@ class Socio {
 		void AgregarConsulta(Consulta* x);
 		void AgregarMascota(Mascota* f);
 		Mascota** masco;
+		
 		Consulta** consu;
+		Consulta** GetConsultas();
 		int GetCantMasco();
 		int GetCantConsu();
 		~Socio();	

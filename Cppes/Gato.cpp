@@ -10,7 +10,10 @@ TipoPelo Gato::getPelo(){
 }
 
 DtMascota* Gato::getDtMascota(){
-	cout << "mando gato";
+	return(new DtGato(this->GetNombre(),
+						 this->GetGenero(),
+						 this->GetPeso(),
+						 this->getPelo()));
 }
 
 Gato::~Gato(){
