@@ -11,12 +11,14 @@ class DtConsulta {
 		string motivo;
 	
 	public:
-		DtFecha getFecha();
-		string getMotivo();
+		DtFecha getFecha() const;
+		string getMotivo() const;
 		void setFcha(DtFecha fecha);
 		void setMotivo(string motivo);
 		DtConsulta(const DtFecha& fecha, string motivo);
 		~DtConsulta();
 };
+
+std::ostream& operator<<(std::ostream &o, const DtConsulta& c);
 
 #endif 

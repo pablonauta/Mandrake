@@ -74,6 +74,10 @@ hoy = DtFecha(20,30,40);
 socios[1] = new Socio("2", "Alberto", hoy);
 cantidadSocios++;
 
+Consulta* hueso = new Consulta(hoy, "Por Chinwenwencha");
+socios[0]->AgregarConsulta(hueso);
+hueso = new Consulta(DtFecha(30,40,50), "Nacional");
+socios[0]->AgregarConsulta(hueso);
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -548,7 +552,7 @@ void listarSocios(){
 
 void preConsulta(){
 	string ci;
-	cout << "Ingresar ci";
+	cout << "Ingresar ci: ";
 	cin >> ci;
 	Socio* x = checkCi(ci);
 	if (x == NULL)
@@ -566,7 +570,7 @@ void preConsulta(){
 
 void ingresarConsulta(string motivo, string ci){
 	Socio* x = checkCi(ci);
-	int dia,mes, anio;
+	int dia, mes, anio;
 	cout << " Fecha de ingreso " << endl;
 	cout << "Ingrese dia: ";
 	cin >> dia;
@@ -592,21 +596,29 @@ void verConsultas(){
 	int canti = x->GetCantConsu();
 	DtConsulta** consutmp = new DtConsulta* [canti];
 	Consulta** xx = x->GetConsultas();
-		for (int i=0; i<canti; i++){
-			consutmp[i] = xx[i]->GetDtConsulta(); 
-			cout << consutmp[i]->getFecha() << endl;
-			cout << consutmp[i]->getMotivo() << endl;
-	}
-	cout << canti  << " consultas" << endl;
-	
 
-	//Consulta* m = x->consu;
-	//cout << x[0].GetMotivo()  << "sssss" << endl;
-	
-//	for (int i=0; i < canti; i++){
-//	
-//		cout << m[i]->GetMotivo() << endl;
+//	for (int i=0; i<canti; i++){
+//			consutmp[i] = xx[i]->GetDtConsulta(); 
+//			cout << "Fecha: " << consutmp[i]->getFecha() ;
+//			cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
+//			cout << "********************************************" << endl;
 //	}
+	
+	for (int i=0; i<canti; i++){
+			consutmp[i] = xx[i]->GetDtConsulta(); 
+			cout << consutmp[i];
+			
+			cout << "Fecha: " << consutmp[i]->getFecha() ;
+			cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
+			cout << "********************************************" << endl;
+			cout << consutmp[i]->getMotivo() << " c";
+			cout << consutmp[i]->getFecha() << " c" << endl;
+	}
+	
+	cout << endl << canti  << " consultas" << endl;
+
+
+
 	
 }
 
