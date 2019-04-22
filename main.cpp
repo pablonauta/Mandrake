@@ -596,23 +596,13 @@ void verConsultas(){
 	int canti = x->GetCantConsu();
 	DtConsulta** consutmp = new DtConsulta* [canti];
 	Consulta** xx = x->GetConsultas();
-
-//	for (int i=0; i<canti; i++){
-//			consutmp[i] = xx[i]->GetDtConsulta(); 
-//			cout << "Fecha: " << consutmp[i]->getFecha() ;
-//			cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
-//			cout << "********************************************" << endl;
-//	}
 	
 	for (int i=0; i<canti; i++){
-			consutmp[i] = xx[i]->GetDtConsulta(); 
-			cout << consutmp[i];
+		consutmp[i] = xx[i]->GetDtConsulta(); 
+		cout << "Fecha: " << consutmp[i]->getFecha() ;
+		cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
+		cout << "********************************************" << endl;
 			
-			cout << "Fecha: " << consutmp[i]->getFecha() ;
-			cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
-			cout << "********************************************" << endl;
-			cout << consutmp[i]->getMotivo() << " c";
-			cout << consutmp[i]->getFecha() << " c" << endl;
 	}
 	
 	cout << endl << canti  << " consultas" << endl;

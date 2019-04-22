@@ -7,7 +7,7 @@ Consulta::Consulta(const DtFecha& fecha, string motivo) : fecha(fecha){
 	
 }
 
-DtConsulta* Consulta::GetDtConsulta(){
+DtConsulta* Consulta::GetDtConsulta() {
 	return new DtConsulta(this->fecha, this->motivo);
 }
 

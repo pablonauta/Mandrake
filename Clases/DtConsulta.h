@@ -3,6 +3,7 @@
 
 #include "DtFecha.h"
 #include <string>
+#include <ostream>
 using namespace std;
 
 class DtConsulta {
@@ -19,6 +20,6 @@ class DtConsulta {
 		~DtConsulta();
 };
 
-std::ostream& operator<<(std::ostream &o, const DtConsulta& c);
+
 
 #endif 
