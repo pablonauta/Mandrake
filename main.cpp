@@ -590,6 +590,13 @@ void verConsultas(){
 		throw std::invalid_argument(" no existe ci");
 	
 	int canti = x->GetCantConsu();
+	DtConsulta** consutmp = new DtConsulta* [canti];
+	Consulta** xx = x->GetConsultas();
+		for (int i=0; i<canti; i++){
+			consutmp[i] = xx[i]->GetDtConsulta(); 
+			cout << consutmp[i]->getFecha() << endl;
+			cout << consutmp[i]->getMotivo() << endl;
+	}
 	cout << canti  << " consultas" << endl;
 	
 
@@ -606,7 +613,7 @@ void verConsultas(){
 void mostrarMenu(){
 	
 	cout << "Bienvenido al sistema" << endl;
-    cout << "Presentamos el Main System Chu" << endl;
+    cout << "Presentamos el Main System Tri" << endl;
     cout << "1 - Registar Socio " << endl;
     cout << "2 - Agregar Mascota " << endl;
 	cout << "3 - Ingresar Consulta " << endl;   
