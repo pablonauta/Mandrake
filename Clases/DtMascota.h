@@ -14,7 +14,6 @@ class DtMascota  {
 		Genero genero;
 		float peso;
 		float racionDiaria;
-		char soy_un;
 	
 	public:
 		string getNombre() const;

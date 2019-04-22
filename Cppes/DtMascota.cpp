@@ -39,9 +39,7 @@ void DtMascota::setGenero(Genero genero){
 	this->genero = genero;
 }
 
-void DtMascota::SetSoy_un(char x){
-	this->soy_un = x;
-}
+
 
 DtMascota::~DtMascota(){
 

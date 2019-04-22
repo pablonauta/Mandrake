@@ -22,5 +22,5 @@ class DtFecha {
 };
 
 std::ostream& operator<<(std::ostream &o, const DtFecha& f);
-
+bool operator<(const DtFecha& fa, const DtFecha& fc);
 #endif 

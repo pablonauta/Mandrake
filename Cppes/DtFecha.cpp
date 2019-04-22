@@ -39,3 +39,9 @@ std::ostream& operator<<(std::ostream &o, const DtFecha& f) {
     o << f.getDia() <<  "/" << f.getMes() << "/" << f.getAnio() <<  std::endl;
     return o;
 }
+
+bool operator<(const DtFecha& fa, const DtFecha& fc){
+	if (fc.getAnio() < fa.getAnio())
+		return true;
+	return false;
+}

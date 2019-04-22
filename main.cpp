@@ -44,7 +44,7 @@ void ingresarConsulta(string motivo, string ci);
 //. Crea una consulta con un motivo para
 // un socio. Si no existe un socio registrado con esa cédula, se levanta una excepción
 // std::invalid_argument.
-void verConsultas();
+DtConsulta** verConsultas();
 DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio,
 int& cantConsultas);
 // que devuelve las consultas antes de cierta fecha. Para poder
@@ -71,6 +71,7 @@ socios[0] = new Socio("1", "juan", hoy);
 cantidadSocios++;
 legato = DtGato("Cholo", Macho, 150, Corto);
 hoy = DtFecha(20,30,40);
+DtFecha ayer = DtFecha(20,30,30);
 socios[1] = new Socio("2", "Alberto", hoy);
 cantidadSocios++;
 
@@ -78,6 +79,9 @@ Consulta* hueso = new Consulta(hoy, "Por Chinwenwencha");
 socios[0]->AgregarConsulta(hueso);
 hueso = new Consulta(DtFecha(30,40,50), "Nacional");
 socios[0]->AgregarConsulta(hueso);
+
+if (ayer < hoy)
+	cout << "eeeh?" << endl;
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -585,7 +589,7 @@ void ingresarConsulta(string motivo, string ci){
 }
 
 
-void verConsultas(){
+DtConsulta** verConsultas(){
 	string ci;
 	cout << "Ingresar ci: ";
 	cin >> ci;
@@ -601,14 +605,12 @@ void verConsultas(){
 		consutmp[i] = xx[i]->GetDtConsulta(); 
 		cout << "Fecha: " << consutmp[i]->getFecha() ;
 		cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
-		cout << "********************************************" << endl;
+		cout << "******************************************** edsfsd" << endl;
 			
 	}
 	
 	cout << endl << canti  << " consultas" << endl;
-
-
-
+	return consutmp;
 	
 }
 
@@ -627,3 +629,5 @@ void mostrarMenu(){
 	
 	
 }
+
+
