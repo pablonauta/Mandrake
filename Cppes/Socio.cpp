@@ -1,10 +1,15 @@
 #include "../Clases/Socio.h"
+#include "../Clases/DtFecha.h" 
+#include "../Clases/DtConsulta.h"
 
 Socio::Socio(string ci, string nombre, const DtFecha& fecha) : fechaIngreso(fecha){
 	this->ci = ci;
 	this->nombre = nombre;
 	this->masco = new Mascota* [MAX_MASCOTAS];
+	
 	this->consu = new Consulta* [MAX_CONSULTAS];
+	for (int i=0; i<MAX_CONSULTAS; i++)
+		this->consu[i] = NULL;
 	this->cantMasco = 0;
 	this->cantConsu = 0;
 }
@@ -30,6 +35,16 @@ void Socio::AgregarMascota(Mascota* f){
 Consulta** Socio::GetConsultas(){
 	return this->consu;
 }
+
+//// que pasa si consultas es 0
+//Consulta** Socio::GetDtConsultas(){
+//	int cant = this->GetCantConsu();
+//	DtConsulta** retorno = new DtConsulta* [this->GetCantConsu()];
+//	for (int i=0; i < cant; i++){
+//		retorno[i] = new DtConsulta(this->consu[i].GetDtFecha(), this->consu[i].getMotivo())
+//	}
+//	return retorno;
+//}
 
 string Socio::GetCi() const{
 	return this->ci;

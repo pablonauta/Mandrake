@@ -59,6 +59,8 @@ DtMascota** obtenerMascotas(string ci, int& cantMascotas);
 // con las mascotas del socio. El largo del arreglo está dado por el parámetro
 // cantMascotas. Si no existe un socio registrado con esa cédula, se levanta una
 // excepción std::invalid_argument.
+void imprimrConsultas(DtConsulta** consu);
+
 
 int main(int argc, char** argv) {
 	
@@ -82,6 +84,9 @@ socios[0]->AgregarConsulta(hueso);
 
 if (ayer < hoy)
 	cout << "eeeh?" << endl;
+	
+DtConsulta** m = verConsultas();
+imprimrConsultas(m);
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -598,16 +603,21 @@ DtConsulta** verConsultas(){
 		throw std::invalid_argument(" no existe ci");
 	
 	int canti = x->GetCantConsu();
-	DtConsulta** consutmp = new DtConsulta* [canti];
+	int maxC = x->GetMAX_CONSULTAS();
+	DtConsulta** consutmp = new DtConsulta* [maxC];
+	for (int i=0; i < maxC; i++)
+		consutmp[i] = NULL;
 	Consulta** xx = x->GetConsultas();
 	
 	for (int i=0; i<canti; i++){
 		consutmp[i] = xx[i]->GetDtConsulta(); 
-		cout << "Fecha: " << consutmp[i]->getFecha() ;
-		cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
-		cout << "******************************************** edsfsd" << endl;
-			
+//		cout << "Fecha: " << consutmp[i]->getFecha() ;
+//		cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
+//		cout << "******************************************** edsfsd" << endl;
+//			
 	}
+	
+	
 	
 	cout << endl << canti  << " consultas" << endl;
 	return consutmp;
@@ -630,4 +640,12 @@ void mostrarMenu(){
 	
 }
 
+void imprimrConsultas(DtConsulta** consu){
+	int i = 0;
+	while (consu[i] != NULL){
+		cout << "Fecha: " << consu[i]->getFecha() << "Motivo: " << consu[i]->getMotivo() << endl;
+		cout << "***********" << endl;
+		i++;
+	}
+}
 

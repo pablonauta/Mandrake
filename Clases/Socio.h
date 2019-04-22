@@ -19,6 +19,8 @@ class Socio {
 		int cantConsu;
 	
 	public:
+		
+//		Consulta** GetDtConsultas();
 	
 		int GetMAX_MASCOTAS();
 		int GetMAX_CONSULTAS();
