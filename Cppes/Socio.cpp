@@ -61,7 +61,7 @@ DtConsulta** Socio::GetDtConsultasAntes(DtFecha fecha, int& cantConsultas){
 	int largo = 0;
 	for (int i=0; i < cant; i++){
 		DtFecha fefa = DtFecha(consu[i]->GetDia(), consu[i]->GetMes(), consu[i]->GetAnio());
-		bool esb = fefa < fecha;
+		bool esb = fefa < fecha; // sobrecarga del operador < 
 		if ( esb ){
 			retorno[largo] = consu[i]->GetDtConsulta();
 			largo++;

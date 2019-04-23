@@ -133,7 +133,7 @@ cout << endl << "fin zona de pruebas" << endl << endl;
             }
             else if (command == "5") {
             	string ci;
-            	cout << "Cerdula :";
+            	cout << "CI :";
             	cin >> ci;
             	int conto = 0;
             	
@@ -310,8 +310,8 @@ void preSocio(){
 		}
 		
 				
-		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
-		registrarSocio(ci, nombre, ultragato);
+		//DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
+		registrarSocio(ci, nombre, DtGato(nombreMascota, genero, peso, pelo));
 		return;
 	
 	}	
@@ -456,8 +456,8 @@ void preDtMascota(){
 				throw std::invalid_argument("Error en los datos ingresados al sistema");
 		}
 		
-	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
-	agregarMascota(ci, ultraperro);
+
+	agregarMascota(ci, DtPerro(nombreMascota, genero, peso, raza, vacuna));
 	return;
 	
 	}
@@ -504,11 +504,10 @@ void preDtMascota(){
 				pelo = Largo;
 				break;
 			default:
-				throw std::invalid_argument("dato incorrecto");
+				throw std::invalid_argument(" dato incorrecto");
 		}
 				
-		DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
-		agregarMascota(ci, ultragato);
+		agregarMascota(ci, DtGato(nombreMascota, genero, peso, pelo));
 		return;
 	
 	}	
@@ -598,8 +597,8 @@ void ingresarConsulta(string motivo, string ci){
 	cout << "Ingrese anio: ";
 	cin >> anio;
 	
-	DtFecha fecha = DtFecha(dia, mes, anio);
-	Consulta* c = new Consulta(fecha, motivo);
+//	DtFecha fecha = DtFecha(dia, mes, anio);
+	Consulta* c = new Consulta(DtFecha(dia, mes, anio), motivo);
 	x->AgregarConsulta(c);
 }
 
