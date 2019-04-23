@@ -44,9 +44,8 @@ void ingresarConsulta(string motivo, string ci);
 //. Crea una consulta con un motivo para
 // un socio. Si no existe un socio registrado con esa cédula, se levanta una excepción
 // std::invalid_argument.
-DtConsulta** verConsultas();
-DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio,
-int& cantConsultas);
+DtConsulta** verConsultas(string ci);
+DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio, int& cantConsultas);
 // que devuelve las consultas antes de cierta fecha. Para poder
 // implementar esta operación se deberá sobrecargar el operador < (menor que) para el
 // DataType Fecha. El largo del arreglo está dado por el parámetro cantConsultas.
@@ -85,8 +84,8 @@ socios[0]->AgregarConsulta(hueso);
 if (ayer < hoy)
 	cout << "eeeh?" << endl;
 	
-DtConsulta** m = verConsultas();
-imprimrConsultas(m);
+//DtConsulta** m = verConsultas();
+//imprimrConsultas(m);
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -125,12 +124,22 @@ cout << endl << "fin zona de pruebas" << endl << endl;
 
             }
             else if (command == "4") {
-            	DtConsulta** consu = verConsultas();
-            	imprimrConsultas(consu);
+            	string ci;
+            	cout << "CI: ";
+            	cin >> ci;
+          	imprimrConsultas(verConsultas(ci));
 
 
             }
-            else if (command == "obtenerInfoEmpresaPorEmpleado") {
+            else if (command == "5") {
+            	string ci;
+            	cout << "Cerdula :";
+            	cin >> ci;
+            	int conto = 0;
+            	
+            	imprimrConsultas(verConsultasAntesDeFecha(DtFecha(1,1,45), ci, conto ));
+            	cout << conto << " conto" << endl;
+            	
 
 
             }
@@ -595,16 +604,14 @@ void ingresarConsulta(string motivo, string ci){
 }
 
 
-DtConsulta** verConsultas(){
-	string ci;
-	cout << "Ingresar ci: ";
-	cin >> ci;
+DtConsulta** verConsultas(string ci){
+	
 	Socio* x = checkCi(ci);
 	if (x == NULL)
 		throw std::invalid_argument(" no existe ci");
 
-	DtConsulta** consutmp = x->GetDtConsultas();
-	return consutmp;
+	cout << x->GetCantConsu() << " consultas." << endl;
+	return x->GetDtConsultas();
 }
 
 void mostrarMenu(){
@@ -632,3 +639,16 @@ void imprimrConsultas(DtConsulta** consu){
 	}
 }
 
+DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio, int& cantConsultas){
+	Socio* x = checkCi(ciSocio);
+	if (x == NULL)
+		throw std::invalid_argument(" no existe ci");
+
+
+	DtConsulta** consutmp = x->GetDtConsultasAntes(Fecha, cantConsultas);
+	cout << x->GetCantConsu() << " consultas." << endl;
+
+	return consutmp;
+	
+	
+}

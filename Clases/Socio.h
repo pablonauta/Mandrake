@@ -21,6 +21,7 @@ class Socio {
 	public:
 		
 		DtConsulta** GetDtConsultas();
+		DtConsulta** GetDtConsultasAntes(DtFecha fecha, int& cantConsultas);
 	
 		int GetMAX_MASCOTAS();
 		int GetMAX_CONSULTAS();
