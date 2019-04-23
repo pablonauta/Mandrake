@@ -38,7 +38,7 @@ Consulta** Socio::GetConsultas(){
 
 //// que pasa si consultas es 0
 DtConsulta** Socio::GetDtConsultas(){
-	int cant = this->GetCantConsu();
+	int cant = GetCantConsu();
 	DtConsulta** retorno = new DtConsulta* [GetMAX_CONSULTAS()];
 	
 	for (int i = 0; i < GetMAX_CONSULTAS(); i++)
