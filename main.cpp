@@ -601,25 +601,25 @@ DtConsulta** verConsultas(){
 	Socio* x = checkCi(ci);
 	if (x == NULL)
 		throw std::invalid_argument(" no existe ci");
-	
-	int canti = x->GetCantConsu();
+//	
+//	int canti = x->GetCantConsu();
 	int maxC = x->GetMAX_CONSULTAS();
 	DtConsulta** consutmp = new DtConsulta* [maxC];
 	for (int i=0; i < maxC; i++)
 		consutmp[i] = NULL;
-	Consulta** xx = x->GetConsultas();
-	
-	for (int i=0; i<canti; i++){
-		consutmp[i] = xx[i]->GetDtConsulta(); 
+//	Consulta** xx = x->GetConsultas();
+//	
+//	for (int i=0; i<canti; i++){
+//		consutmp[i] = xx[i]->GetDtConsulta(); 
 //		cout << "Fecha: " << consutmp[i]->getFecha() ;
 //		cout << "Motivo: " << consutmp[i]->getMotivo() << endl;
 //		cout << "******************************************** edsfsd" << endl;
 //			
-	}
+//	}
 	
 	
 	
-	cout << endl << canti  << " consultas" << endl;
+//	cout << endl << canti  << " consultas" << endl;
 	return consutmp;
 	
 }
@@ -644,7 +644,7 @@ void imprimrConsultas(DtConsulta** consu){
 	int i = 0;
 	while (consu[i] != NULL){
 		cout << "Fecha: " << consu[i]->getFecha() << "Motivo: " << consu[i]->getMotivo() << endl;
-		cout << "***********" << endl;
+		cout << "*********************************************" << endl;
 		i++;
 	}
 }

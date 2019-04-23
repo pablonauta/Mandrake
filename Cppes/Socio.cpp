@@ -37,14 +37,14 @@ Consulta** Socio::GetConsultas(){
 }
 
 //// que pasa si consultas es 0
-//Consulta** Socio::GetDtConsultas(){
-//	int cant = this->GetCantConsu();
-//	DtConsulta** retorno = new DtConsulta* [this->GetCantConsu()];
-//	for (int i=0; i < cant; i++){
-//		retorno[i] = new DtConsulta(this->consu[i].GetDtFecha(), this->consu[i].getMotivo())
-//	}
-//	return retorno;
-//}
+DtConsulta** Socio::GetDtConsultas(){
+	int cant = this->GetCantConsu();
+	DtConsulta** retorno = new DtConsulta* [this->GetMAX_CONSULTAS()];
+	for (int i=0; i < cant; i++){
+		retorno[i] = consu[i]->GetDtConsulta();
+	}
+	return retorno;
+}
 
 string Socio::GetCi() const{
 	return this->ci;

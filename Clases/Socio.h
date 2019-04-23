@@ -20,7 +20,7 @@ class Socio {
 	
 	public:
 		
-//		Consulta** GetDtConsultas();
+		DtConsulta** GetDtConsultas();
 	
 		int GetMAX_MASCOTAS();
 		int GetMAX_CONSULTAS();
