@@ -39,10 +39,14 @@ Consulta** Socio::GetConsultas(){
 //// que pasa si consultas es 0
 DtConsulta** Socio::GetDtConsultas(){
 	int cant = this->GetCantConsu();
-	DtConsulta** retorno = new DtConsulta* [this->GetMAX_CONSULTAS()];
-	for (int i=0; i < cant; i++){
+	DtConsulta** retorno = new DtConsulta* [GetMAX_CONSULTAS()];
+	
+	for (int i = 0; i < GetMAX_CONSULTAS(); i++)
+		retorno[i] = NULL;
+	
+	for (int i=0; i < cant; i++)
 		retorno[i] = consu[i]->GetDtConsulta();
-	}
+	
 	return retorno;
 }
 
