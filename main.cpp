@@ -506,7 +506,7 @@ void preDtMascota(){
 			default:
 				throw std::invalid_argument(" dato incorrecto");
 		}
-				
+		
 		agregarMascota(ci, DtGato(nombreMascota, genero, peso, pelo));
 		return;
 	
@@ -533,24 +533,20 @@ void agregarMascota(string ci, const DtMascota& dtMascota){
 	DtPerro* toga = dynamic_cast<DtPerro*>(cat);
 
 	if (toga){
-		cout << "bo, soy un maldito perro!" << endl;
-
-		m->AgregarMascota(new Perro(toga->getNombre(), 
-						   			toga->getGenero(), 
-									toga->getPeso(), 
-									toga->getRaza(), 
-									toga->getVacunaCachorro()));
+			m->AgregarMascota(new Perro(toga->getNombre(), 
+							   			toga->getGenero(), 
+										toga->getPeso(), 
+										toga->getRaza(), 
+										toga->getVacunaCachorro()));
 	
 	}
 	else{
-		cout << "bo, soy un maldito gato!" << endl;
 		DtGato* gat = (DtGato*)cat;
 		m->AgregarMascota(new Gato(gat->getNombre(), 
 								   gat->getGenero(), 
    		   						   gat->getPeso(), 
 								   gat->getPelo()));
 	}		
-	
 
 }
 
@@ -597,7 +593,6 @@ void ingresarConsulta(string motivo, string ci){
 	cout << "Ingrese anio: ";
 	cin >> anio;
 	
-//	DtFecha fecha = DtFecha(dia, mes, anio);
 	Consulta* c = new Consulta(DtFecha(dia, mes, anio), motivo);
 	x->AgregarConsulta(c);
 }
@@ -645,7 +640,7 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio, int&
 
 
 	DtConsulta** consutmp = x->GetDtConsultasAntes(Fecha, cantConsultas);
-	cout << x->GetCantConsu() << " consultas." << endl;
+	cout << cantConsultas << " consultas." << endl;
 
 	return consutmp;
 	
