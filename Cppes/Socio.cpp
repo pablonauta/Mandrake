@@ -1,12 +1,14 @@
 #include "../Clases/Socio.h"
 #include "../Clases/DtFecha.h" 
 #include "../Clases/DtConsulta.h"
+#include "../Clases/DtMascota.h"
 
 Socio::Socio(string ci, string nombre, const DtFecha& fecha) : fechaIngreso(fecha){
 	this->ci = ci;
 	this->nombre = nombre;
 	this->masco = new Mascota* [MAX_MASCOTAS];
-	
+	for (int i=0; i<MAX_MASCOTAS; i++)
+		this->masco[i] = NULL;
 	this->consu = new Consulta* [MAX_CONSULTAS];
 	for (int i=0; i<MAX_CONSULTAS; i++)
 		this->consu[i] = NULL;
@@ -36,23 +38,31 @@ Consulta** Socio::GetConsultas(){
 	return this->consu;
 }
 
-//// que pasa si consultas es 0
 DtConsulta** Socio::GetDtConsultas(){
-	int cant = GetCantConsu();
 	DtConsulta** retorno = new DtConsulta* [GetMAX_CONSULTAS()];
 	
 	for (int i = 0; i < GetMAX_CONSULTAS(); i++)
 		retorno[i] = NULL;
 	
-	for (int i=0; i < cant; i++)
+	for (int i=0; i < GetCantConsu(); i++)
 		retorno[i] = consu[i]->GetDtConsulta();
 	
 	return retorno;
 }
 
-DtConsulta** Socio::GetDtConsultasAntes(DtFecha fecha, int& cantConsultas){
+DtMascota** Socio::GetDtMascotas(){
+	DtMascota** retorno = new DtMascota* [GetMAX_MASCOTAS()];
 	
-//	int cant = GetCantConsu();
+	for (int i = 0; i < GetMAX_MASCOTAS(); i++)
+		retorno[i] = NULL;
+		
+	for (int i = 0; i < GetCantMasco(); i++)
+		retorno[i] = masco[i]->getDtMascota();
+	
+	return retorno;
+}
+
+DtConsulta** Socio::GetDtConsultasAntes(DtFecha fecha, int& cantConsultas){
 	DtConsulta** retorno = new DtConsulta* [GetMAX_CONSULTAS()];
 	
 	for (int i = 0; i < GetMAX_CONSULTAS(); i++)
@@ -71,7 +81,6 @@ DtConsulta** Socio::GetDtConsultasAntes(DtFecha fecha, int& cantConsultas){
 	return retorno;
 	}
 
-
 string Socio::GetCi() const{
 	return this->ci;
 }
@@ -86,7 +95,6 @@ string Socio::GetNombre() const{
 
 int Socio::GetCantMasco(){
 	return this->cantMasco;
-
 }
 
 void Socio::SetCi(string ci){

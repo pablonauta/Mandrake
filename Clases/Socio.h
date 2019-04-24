@@ -22,7 +22,7 @@ class Socio {
 		
 		DtConsulta** GetDtConsultas();
 		DtConsulta** GetDtConsultasAntes(DtFecha fecha, int& cantConsultas);
-	
+		DtMascota** GetDtMascotas();
 		int GetMAX_MASCOTAS();
 		int GetMAX_CONSULTAS();
 		Socio(string ci, string nombre, const DtFecha& fecha);
@@ -35,9 +35,8 @@ class Socio {
 		void AgregarConsulta(Consulta* x);
 		void AgregarMascota(Mascota* f);
 		Mascota** masco; //
-		
 		Consulta** consu; // 
-		Consulta** GetConsultas(); //
+		Consulta** GetConsultas();
 		int GetCantMasco();
 		int GetCantConsu();
 		~Socio();	
