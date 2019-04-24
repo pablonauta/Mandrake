@@ -318,9 +318,6 @@ void preSocio(){
 	
 }
 
-
-
-
 void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	int dia, mes, anio;
 	cout << " Fecha de ingreso " << endl;
@@ -332,33 +329,25 @@ void registrarSocio(string ci, string nombre, const DtMascota& dtMascota){
 	cin >> anio;
 
 //hay que revisar la fecha valida;
-	
-	DtFecha fecha = DtFecha(dia, mes, anio);
-	socios[cantidadSocios] = new Socio(ci, nombre, fecha);
+	socios[cantidadSocios] = new Socio(ci, nombre, DtFecha(dia, mes, anio));
 	DtMascota* cat;
 	cat = const_cast<DtMascota*>(&dtMascota);
 	DtPerro* toga = dynamic_cast<DtPerro*>(cat);
 
 	if (toga){
-		cout << "bo, soy un maldito perro!" << endl;
-
 		socios[cantidadSocios]->AgregarMascota(new Perro(toga->getNombre(), 
 						     							toga->getGenero(), 
 														toga->getPeso(), 
 														toga->getRaza(), 
 														toga->getVacunaCachorro()));
-	
 	}
 	else{
-		cout << "bo, soy un maldito gato!" << endl;
 		DtGato* gat = (DtGato*)cat;
 		socios[cantidadSocios]->AgregarMascota(new Gato(gat->getNombre(), 
 														gat->getGenero(), 
 														gat->getPeso(), 
 														gat->getPelo()));
 	}		
-		
-	cout << socios[cantidadSocios]->GetCi() << " <- ci bo" << endl;
 	cantidadSocios++;
 }
 
@@ -369,14 +358,9 @@ void preDtMascota(){
 	cout << "ingrese la ci :";
 	cin >> ci;
 	
-	// revisar si existe la cedula
-	
 	Socio* x = checkCi(ci);
-	
 	if (x == NULL)
 		throw std::invalid_argument(" el socio no existe");
-	
-	// revisar el limite de mascotas
 	
 	if (x->GetCantMasco() == x->GetMAX_MASCOTAS())
 		throw std::invalid_argument(" lleno de mascotas");
@@ -456,10 +440,8 @@ void preDtMascota(){
 				throw std::invalid_argument("Error en los datos ingresados al sistema");
 		}
 		
-
 	agregarMascota(ci, DtPerro(nombreMascota, genero, peso, raza, vacuna));
 	return;
-	
 	}
 	
 	if (pog == 1){
@@ -487,7 +469,7 @@ void preDtMascota(){
 		
 		cout << "Peso de la mascota: ";
 		cin >> peso;
-		cout << "Pelo de la mascota: "<< endl;
+		cout << "Pelo de la mascota: " << endl;
 		cout << "Si es Corto,   ingrese->0 " << endl;
 		cout << "Si es Mediano, ingrese->1 " << endl;
 		cout << "Si es Largo,   ingrese->2 " << endl;
@@ -509,14 +491,10 @@ void preDtMascota(){
 		
 		agregarMascota(ci, DtGato(nombreMascota, genero, peso, pelo));
 		return;
-	
 	}	
-	
-	
 }
 
-Socio* checkCi(string ci){
-	
+Socio* checkCi(string ci){	
 	for (int i=0; i<cantidadSocios; i++){
 		if (socios[i]->GetCi() == ci){
 			return socios[i];			
@@ -524,7 +502,6 @@ Socio* checkCi(string ci){
 	}
 	return NULL;
 }
-
 
 void agregarMascota(string ci, const DtMascota& dtMascota){
 	Socio* m = checkCi(ci);
@@ -638,11 +615,9 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio, int&
 	if (x == NULL)
 		throw std::invalid_argument(" no existe ci");
 
-
 	DtConsulta** consutmp = x->GetDtConsultasAntes(Fecha, cantConsultas);
 	cout << cantConsultas << " consultas." << endl;
 
 	return consutmp;
-	
 	
 }

@@ -52,16 +52,15 @@ DtConsulta** Socio::GetDtConsultas(){
 
 DtConsulta** Socio::GetDtConsultasAntes(DtFecha fecha, int& cantConsultas){
 	
-	int cant = GetCantConsu();
+//	int cant = GetCantConsu();
 	DtConsulta** retorno = new DtConsulta* [GetMAX_CONSULTAS()];
 	
 	for (int i = 0; i < GetMAX_CONSULTAS(); i++)
 		retorno[i] = NULL;
 	
 	int largo = 0;
-	for (int i=0; i < cant; i++){
-		DtFecha fefa = DtFecha(consu[i]->GetDia(), consu[i]->GetMes(), consu[i]->GetAnio());
-		bool esb = fefa < fecha; // sobrecarga del operador < 
+	for (int i = 0; i < GetCantConsu(); i++){
+		bool esb = DtFecha(consu[i]->GetDia(), consu[i]->GetMes(), consu[i]->GetAnio()) < fecha; // sobrecarga del operador < 
 		if ( esb ){
 			retorno[largo] = consu[i]->GetDtConsulta();
 			largo++;
