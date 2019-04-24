@@ -19,4 +19,5 @@ class DtGato : public DtMascota {
 		virtual ~DtGato();
 };
 
+std::ostream& operator<<(std::ostream &o, DtGato* m);
 #endif 

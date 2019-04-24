@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <stdio.h>
 #include <ctime>
+#include <ostream>
 
 #include "Clases/DtMascota.h"
 #include "Clases/DtConsulta.h"
@@ -74,6 +75,9 @@ legato = DtGato("Cholo", Macho, 150, Corto);
 hoy = DtFecha(20,30,40);
 DtFecha ayer = DtFecha(20,30,30);
 socios[1] = new Socio("2", "Alberto", hoy);
+socios[1]->AgregarMascota(new Gato("tom", Macho, 150, Corto));
+cantidadSocios++;
+socios[0]->AgregarMascota(new Perro("toby", Macho, 150, otro, false));
 cantidadSocios++;
 
 Consulta* hueso = new Consulta(hoy, "Por Chinwenwencha");
@@ -136,13 +140,41 @@ cout << endl << "fin zona de pruebas" << endl << endl;
             	cout << "CI :";
             	cin >> ci;
             	int conto = 0;
-            	
             	imprimrConsultas(verConsultasAntesDeFecha(DtFecha(1,1,45), ci, conto ));
             	cout << conto << " conto" << endl;
-            	
-
-
             }
+            
+            else if (command == "7") {
+            	string ci;
+            	cout << "CI :";
+            	cin >> ci;
+            	int conto = 0;
+            	DtMascota** p = obtenerMascotas(ci, conto); 
+            	/////
+            	
+	DtMascota* cat;
+//	cat = const_cast<DtMascota*>(&p[0]);
+	DtPerro* toga = dynamic_cast<DtPerro*>(p[0]);
+
+	if (toga){
+		cout <<"es un rope" << endl;
+		
+		cout << toga;
+		cout << hoy;
+	}
+	else{
+		DtGato* gat = (DtGato*)p[0];
+		cout << "es un gatogolo" << endl;
+		cout << gat;
+	}
+		
+            	////
+            	
+            	
+            	
+            	cout << conto << " conto" << endl;  	
+            }
+            
             else {
                 throw std::invalid_argument("Comando no reconocido");
             }
@@ -151,8 +183,9 @@ cout << endl << "fin zona de pruebas" << endl << endl;
             cout << "Comando ejecutado correctamente" << endl;
         }
         catch(std::invalid_argument &ia) {
-        	mostrarMenu();
+        	
 			cout << "Error: " << ia.what() << endl;
+			mostrarMenu();
             //efecto refresco de menu...
 		   
         }
@@ -309,8 +342,6 @@ void preSocio(){
 				throw std::invalid_argument("dato incorrecto");
 		}
 		
-				
-		//DtGato ultragato = DtGato(nombreMascota, genero, peso, pelo);
 		registrarSocio(ci, nombre, DtGato(nombreMascota, genero, peso, pelo));
 		return;
 	
@@ -364,7 +395,6 @@ void preDtMascota(){
 	
 	if (x->GetCantMasco() == x->GetMAX_MASCOTAS())
 		throw std::invalid_argument(" lleno de mascotas");
-	
 	
 	cout << "Si la mascota es Perro->ingrese 0," << endl;
 	cout << "           si es Gato-->ingrese 1 : ";
@@ -574,7 +604,6 @@ void ingresarConsulta(string motivo, string ci){
 	x->AgregarConsulta(c);
 }
 
-
 DtConsulta** verConsultas(string ci){
 	
 	Socio* x = checkCi(ci);
@@ -614,10 +643,17 @@ DtConsulta** verConsultasAntesDeFecha(const DtFecha& Fecha, string ciSocio, int&
 	Socio* x = checkCi(ciSocio);
 	if (x == NULL)
 		throw std::invalid_argument(" no existe ci");
-
 	DtConsulta** consutmp = x->GetDtConsultasAntes(Fecha, cantConsultas);
 	cout << cantConsultas << " consultas." << endl;
-
 	return consutmp;
+}
+
+DtMascota** obtenerMascotas(string ci, int& cantMascotas){
+	Socio* x = checkCi(ci);
+	if (x == NULL)
+		throw std::invalid_argument(" no existe ci");
+	DtMascota** retorno = x->GetDtMascotas();
+	cantMascotas = x->GetCantMasco();
+	return retorno;
 	
 }

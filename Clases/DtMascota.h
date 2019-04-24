@@ -5,6 +5,7 @@
 #include "../Clases/Genero.h"
 
 
+
 using namespace std;
 
 class DtMascota  {
@@ -24,11 +25,11 @@ class DtMascota  {
 		void setGenero(Genero genero);
 		void setPeso(float peso);
 		void SetRacionDiaria(float racionDiaria);
-		void SetSoy_un(char x);
 		DtMascota(string nombre, Genero genero, float peso);
 		virtual void trolomorfo() = 0;
 		virtual ~DtMascota();
 		
 };
+
 
 #endif

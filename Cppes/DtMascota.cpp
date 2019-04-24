@@ -8,9 +8,6 @@ DtMascota::DtMascota(string nombre, Genero genero, float peso){
 	this->racionDiaria = 0;
 }
 
-
-
-
 Genero DtMascota::getGenero() const{
 	return this->genero;
 }
@@ -38,8 +35,6 @@ void DtMascota::SetRacionDiaria(float racionDiaria){
 void DtMascota::setGenero(Genero genero){
 	this->genero = genero;
 }
-
-
 
 DtMascota::~DtMascota(){
 

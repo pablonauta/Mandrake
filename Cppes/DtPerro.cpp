@@ -1,6 +1,4 @@
 #include "../Clases/DtPerro.h"
-
-
 #include <iostream>
 
 DtPerro::DtPerro(string nombre, Genero genero, float peso, RazaPerro raza, bool vacuna) : 
@@ -31,4 +29,9 @@ void DtPerro::setVacunaCachorro(bool vacuna){
 
 DtPerro::~DtPerro(){
 	
+}
+//std::ostream& operator<<(std::ostream &o, const DtPerro& m) {
+std::ostream& operator<<(std::ostream &o, DtPerro* m) {
+    o << m->getNombre() <<   std::endl;
+    return o;
 }

@@ -22,3 +22,8 @@ void DtGato::setTipoPelo(TipoPelo pelo){
 DtGato::~DtGato(){
 
 }
+
+std::ostream& operator<<(std::ostream &o, DtGato* m) {
+	 o << m->getNombre() <<   std::endl;
+    return o;
+}
