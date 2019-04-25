@@ -78,11 +78,11 @@ socios[1] = new Socio("2", "Alberto", hoy);
 socios[1]->AgregarMascota(new Gato("tom", Macho, 150, Corto));
 cantidadSocios++;
 socios[0]->AgregarMascota(new Perro("toby", Macho, 150, otro, false));
-cantidadSocios++;
+
 socios[0]->AgregarMascota(new Perro("Chicho", Macho, 80, collie, true));
-cantidadSocios++;
+
 socios[0]->AgregarMascota(new Gato("Kity", Hembra, 200, Corto));
-cantidadSocios++;
+
 
 Consulta* hueso = new Consulta(hoy, "Por Chinwenwencha");
 socios[0]->AgregarConsulta(hueso);
