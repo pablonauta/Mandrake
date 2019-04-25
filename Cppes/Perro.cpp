@@ -14,12 +14,18 @@ bool Perro::GetVacuna(){
 	return this->vacuna;
 }
 
+float Perro::obtenerRacionDiaria(){
+	return this->GetPeso() * 0.025;
+}
+
 DtMascota* Perro::getDtMascota(){
-	return new DtPerro(this->GetNombre(),
-						this->GetGenero(),
-						this->GetPeso(),
-						this->GetRaza(),
-						this->GetVacuna());
+	DtPerro* Perrou = new DtPerro(this->GetNombre(),
+								this->GetGenero(),
+								this->GetPeso(),
+								this->GetRaza(),
+								this->GetVacuna());
+	Perrou->SetRacionDiaria(this->obtenerRacionDiaria());
+	return Perrou;
 }
 
 Perro::~Perro(){

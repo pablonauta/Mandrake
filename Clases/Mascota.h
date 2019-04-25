@@ -20,6 +20,7 @@ class Mascota {
 		Genero GetGenero() const;
 		string GetNombre() const;
 		virtual DtMascota* getDtMascota() = 0;
+		virtual float obtenerRacionDiaria() = 0;
 		void SetPeso(float peso);
 		void SetGenero(Genero genero);
 		void SetNombre(string nombre);

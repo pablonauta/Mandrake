@@ -1,10 +1,7 @@
 #ifndef DtMascota_H
 #define DtMascota_H
-
 #include <string>
 #include "../Clases/Genero.h"
-
-
 
 using namespace std;
 
@@ -30,6 +27,5 @@ class DtMascota  {
 		virtual ~DtMascota();
 		
 };
-
 
 #endif

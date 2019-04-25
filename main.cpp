@@ -79,6 +79,10 @@ socios[1]->AgregarMascota(new Gato("tom", Macho, 150, Corto));
 cantidadSocios++;
 socios[0]->AgregarMascota(new Perro("toby", Macho, 150, otro, false));
 cantidadSocios++;
+socios[0]->AgregarMascota(new Perro("Chicho", Macho, 80, collie, true));
+cantidadSocios++;
+socios[0]->AgregarMascota(new Gato("Kity", Hembra, 200, Corto));
+cantidadSocios++;
 
 Consulta* hueso = new Consulta(hoy, "Por Chinwenwencha");
 socios[0]->AgregarConsulta(hueso);
@@ -151,28 +155,19 @@ cout << endl << "fin zona de pruebas" << endl << endl;
             	int conto = 0;
             	DtMascota** p = obtenerMascotas(ci, conto); 
             	/////
-            	
-	DtMascota* cat;
-//	cat = const_cast<DtMascota*>(&p[0]);
-	DtPerro* toga = dynamic_cast<DtPerro*>(p[0]);
-
-	if (toga){
-		cout <<"es un rope" << endl;
-		
-		cout << toga;
-		cout << hoy;
-	}
-	else{
-		DtGato* gat = (DtGato*)p[0];
-		cout << "es un gatogolo" << endl;
-		cout << gat;
-	}
-		
-            	////
-            	
-            	
-            	
-            	cout << conto << " conto" << endl;  	
+            	for (int i = 0; i < conto; i++){
+					DtPerro* toga = dynamic_cast<DtPerro*>(p[i]);
+					if (toga){
+						cout << toga;
+					}
+					else{
+						DtGato* gat = (DtGato*)p[i];
+						cout << gat;
+					}
+			    }    	////
+			    cout << "***********************************" << endl; 
+	        	cout << "Total: " << conto << " Mascotas.-" << endl;
+	        	cout << "***********************************" << endl; 
             }
             
             else {
@@ -290,9 +285,8 @@ void preSocio(){
 			default:
 				throw std::invalid_argument(" vacuna ilegal");
 		}
-		
-	DtPerro ultraperro =  DtPerro(nombreMascota, genero, peso, raza, vacuna);
-	registrarSocio(ci, nombre, ultraperro);
+	
+	registrarSocio(ci, nombre, DtPerro(nombreMascota, genero, peso, raza, vacuna));
 	return;
 	
 	}
@@ -617,7 +611,7 @@ DtConsulta** verConsultas(string ci){
 void mostrarMenu(){
 	
 	cout << "Bienvenido al sistema" << endl;
-    cout << "Presentamos el Main System Tri" << endl;
+    cout << "Presentamos el Main System Five" << endl;
     cout << "1 - Registar Socio " << endl;
     cout << "2 - Agregar Mascota " << endl;
 	cout << "3 - Ingresar Consulta " << endl;   

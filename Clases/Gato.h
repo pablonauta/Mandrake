@@ -13,6 +13,7 @@ class Gato : public Mascota {
 	public:
 		Gato(string nombre, Genero genero, float peso, TipoPelo pelo);
 		DtMascota* getDtMascota();
+		float obtenerRacionDiaria();
 		TipoPelo getPelo();
 		virtual ~Gato();
 	

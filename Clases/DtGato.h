@@ -7,7 +7,6 @@
 
 class DtGato : public DtMascota {
 
-	
 	private:
 		TipoPelo pelo;
 	
