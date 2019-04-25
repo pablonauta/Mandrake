@@ -169,6 +169,13 @@ cout << endl << "fin zona de pruebas" << endl << endl;
 	        	cout << "Total: " << conto << " Mascotas.-" << endl;
 	        	cout << "***********************************" << endl; 
             }
+            else if (command == "8") {
+            	cout << "eliminar socio..." << endl;
+            	string ci;
+            	cout << "CI :";
+            	cin >> ci;
+            	eliminarSocio(ci);
+            }
             
             else {
                 throw std::invalid_argument("Comando no reconocido");
@@ -619,6 +626,7 @@ void mostrarMenu(){
 	cout << "5 - Ver Consulta antes de fecha" << endl;
 	cout << "6 - Listar socios" << endl;
 	cout << "7 - Obtener mascotas" << endl;
+	cout << "8 - Eliminar Socio" << endl;
 	cout << "0 - Salir" << endl;
 	
 	
@@ -650,4 +658,31 @@ DtMascota** obtenerMascotas(string ci, int& cantMascotas){
 	cantMascotas = x->GetCantMasco();
 	return retorno;
 	
+}
+
+void eliminarSocio(string ci){
+	Socio* del = checkCi(ci);
+	if (del == NULL)
+		throw std::invalid_argument(" Ci no existe en el sistema");
+	int pos = 0;
+	for (int i=0; i < cantidadSocios; i++){
+		if (socios[i]->GetCi() == ci){
+			pos = i;
+			break;
+		}
+	}
+	delete socios[pos];
+	socios[pos] = NULL;
+	cantidadSocios--;
+	
+//	if (pos == cantidadSocios){
+//		
+//		cantidadSocios--;
+//		return;
+//	}
+//	else{
+		for (int i = pos; pos<cantidadSocios; i++)
+			socios[pos] = socios[pos+1];
+//	}
+		
 }
