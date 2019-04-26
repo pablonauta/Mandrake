@@ -589,8 +589,11 @@ void preConsulta(){
 	
 	string moti;
 	cout << "Motivo: ";
-	cin >> moti;
+	fflush(stdin);
+	std::getline(cin, moti);
+	cout << moti;
 	ingresarConsulta(moti, ci);
+	
 
 }
 
