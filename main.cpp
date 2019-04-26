@@ -78,22 +78,16 @@ socios[1] = new Socio("2", "Alberto", hoy);
 socios[1]->AgregarMascota(new Gato("tom", Macho, 150, Corto));
 cantidadSocios++;
 socios[0]->AgregarMascota(new Perro("toby", Macho, 150, otro, false));
-
 socios[0]->AgregarMascota(new Perro("Chicho", Macho, 80, collie, true));
-
 socios[0]->AgregarMascota(new Gato("Kity", Hembra, 200, Corto));
-
-
 Consulta* hueso = new Consulta(hoy, "Por Chinwenwencha");
 socios[0]->AgregarConsulta(hueso);
 hueso = new Consulta(DtFecha(30,40,50), "Nacional");
 socios[0]->AgregarConsulta(hueso);
 
-if (ayer < hoy)
+if (ayer < hoy) //
 	cout << "eeeh?" << endl;
-	
-//DtConsulta** m = verConsultas();
-//imprimrConsultas(m);
+
 	
 cout << endl << "fin zona de pruebas" << endl << endl;
 // fin de zona de pruebas x 				
@@ -659,7 +653,6 @@ DtMascota** obtenerMascotas(string ci, int& cantMascotas){
 	DtMascota** retorno = x->GetDtMascotas();
 	cantMascotas = x->GetCantMasco();
 	return retorno;
-	
 }
 
 void eliminarSocio(string ci){
@@ -667,20 +660,16 @@ void eliminarSocio(string ci){
 	if (del == NULL)
 		throw std::invalid_argument(" Ci no existe en el sistema");
 		
-	
 	int pos = 0;
 	for (pos = 0; pos < cantidadSocios; pos ++){
 		if (socios[pos]->GetCi() == ci){
 			break;
 		}
 	}
-	cout << pos <<  "eeeeee" << endl;
-	cout << cantidadSocios << endl;
 	
 	if (pos == 0 && cantidadSocios == 1){
 		delete del;
 		cantidadSocios--;
-		cout << "uuuuuuuu" << endl;
 		return;
 	}
 
@@ -688,13 +677,5 @@ void eliminarSocio(string ci){
 	socios[pos] = socios[cantidadSocios-1];
 	cantidadSocios--;
 	delete del;
-	//socios[pos] = NULL;
-//	cantidadSocios--;
-//	
-//	for (int i = pos; pos < cantidadSocios; i++)
-//		socios[pos] = socios[pos+1];
-//	
-//
-//	delete del;
 }
 //
