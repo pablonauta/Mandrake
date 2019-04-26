@@ -1,18 +1,17 @@
 # Project: vety
-# Makefile created by Dev-C++ 5.11
+# Makefile
 
-CPP      = g++.exe -D__DEBUG__
-CC       = gcc.exe -D__DEBUG__
-WINDRES  = windres.exe
+CPP      = g++
+CC       = gcc
 OBJ      = main.o Cppes/DtMascota.o Cppes/DtGato.o Cppes/DtPerro.o Cppes/DtFecha.o Cppes/DtConsulta.o Cppes/Socio.o Cppes/Mascota.o Cppes/Gato.o Cppes/Perro.o Cppes/Consulta.o Clases/Fecha.o
 LINKOBJ  = main.o Cppes/DtMascota.o Cppes/DtGato.o Cppes/DtPerro.o Cppes/DtFecha.o Cppes/DtConsulta.o Cppes/Socio.o Cppes/Mascota.o Cppes/Gato.o Cppes/Perro.o Cppes/Consulta.o Clases/Fecha.o
-LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
-INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = vety.exe
+LIBS     = 
+INCS     = 
+CXXINCS  = 
+BIN      = vety
 CXXFLAGS = $(CXXINCS) -g3
 CFLAGS   = $(INCS) -g3
-RM       = rm.exe -f
+RM       = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -57,5 +56,3 @@ Cppes/Perro.o: Cppes/Perro.cpp
 Cppes/Consulta.o: Cppes/Consulta.cpp
 	$(CPP) -c Cppes/Consulta.cpp -o Cppes/Consulta.o $(CXXFLAGS)
 
-Clases/Fecha.o: Clases/Fecha.cpp
-	$(CPP) -c Clases/Fecha.cpp -o Clases/Fecha.o $(CXXFLAGS)
