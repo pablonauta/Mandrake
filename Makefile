@@ -3,8 +3,8 @@
 
 CPP      = g++
 CC       = gcc
-OBJ      = main.o Cppes/DtMascota.o Cppes/DtGato.o Cppes/DtPerro.o Cppes/DtFecha.o Cppes/DtConsulta.o Cppes/Socio.o Cppes/Mascota.o Cppes/Gato.o Cppes/Perro.o Cppes/Consulta.o Clases/Fecha.o
-LINKOBJ  = main.o Cppes/DtMascota.o Cppes/DtGato.o Cppes/DtPerro.o Cppes/DtFecha.o Cppes/DtConsulta.o Cppes/Socio.o Cppes/Mascota.o Cppes/Gato.o Cppes/Perro.o Cppes/Consulta.o Clases/Fecha.o
+OBJ      = main.o Cppes/DtMascota.o Cppes/DtGato.o Cppes/DtPerro.o Cppes/DtFecha.o Cppes/DtConsulta.o Cppes/Socio.o Cppes/Mascota.o Cppes/Gato.o Cppes/Perro.o Cppes/Consulta.o 
+LINKOBJ  = main.o Cppes/DtMascota.o Cppes/DtGato.o Cppes/DtPerro.o Cppes/DtFecha.o Cppes/DtConsulta.o Cppes/Socio.o Cppes/Mascota.o Cppes/Gato.o Cppes/Perro.o Cppes/Consulta.o 
 LIBS     = 
 INCS     = 
 CXXINCS  = 
