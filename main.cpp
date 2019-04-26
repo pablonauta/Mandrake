@@ -104,7 +104,9 @@ cout << endl << "fin zona de pruebas" << endl << endl;
     cout << ">";
     cin >> command;
     
+    
     while (command != "0") {
+    	
     	
         try {
             if (command == "1") {
