@@ -664,25 +664,35 @@ void eliminarSocio(string ci){
 	Socio* del = checkCi(ci);
 	if (del == NULL)
 		throw std::invalid_argument(" Ci no existe en el sistema");
+		
+	
 	int pos = 0;
-	for (int i=0; i < cantidadSocios; i++){
-		if (socios[i]->GetCi() == ci){
-			pos = i;
+	for (pos = 0; pos < cantidadSocios; pos ++){
+		if (socios[pos]->GetCi() == ci){
 			break;
 		}
 	}
-	delete socios[pos];
-	socios[pos] = NULL;
-	cantidadSocios--;
+	cout << pos <<  "eeeeee" << endl;
+	cout << cantidadSocios << endl;
 	
-//	if (pos == cantidadSocios){
-//		
-//		cantidadSocios--;
-//		return;
-//	}
-//	else{
-		for (int i = pos; pos<cantidadSocios; i++)
-			socios[pos] = socios[pos+1];
-//	}
-		
+	if (pos == 0 && cantidadSocios == 1){
+		delete del;
+		cantidadSocios--;
+		cout << "uuuuuuuu" << endl;
+		return;
+	}
+
+	cout << cantidadSocios << endl;
+	socios[pos] = socios[cantidadSocios-1];
+	cantidadSocios--;
+	delete del;
+	//socios[pos] = NULL;
+//	cantidadSocios--;
+//	
+//	for (int i = pos; pos < cantidadSocios; i++)
+//		socios[pos] = socios[pos+1];
+//	
+//
+//	delete del;
 }
+//
