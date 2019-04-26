@@ -39,11 +39,11 @@ std::ostream& operator<<(std::ostream &o, const DtFecha& f) {
 }
 
 bool operator<(const DtFecha& fa, const DtFecha& fc){
-	if (fc.getAnio() < fa.getAnio())
+	if (fa.getAnio() < fc.getAnio())
 		return true;
-	if (fc.getMes() < fa.getMes())
+	if (fa.getMes() < fc.getMes())
 		return true;
-	if (fc.getDia() < fa.getDia())
+	if (fa.getDia() < fc.getDia())
 		return true;
 	return false;
 }

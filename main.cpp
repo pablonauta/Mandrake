@@ -140,8 +140,16 @@ cout << endl << "fin zona de pruebas" << endl << endl;
             	cout << "CI :";
             	cin >> ci;
             	int conto = 0;
-            	imprimrConsultas(verConsultasAntesDeFecha(DtFecha(1,1,45), ci, conto ));
-            	cout << conto << " conto" << endl;
+            	int dia, mes, anio;
+            	cout << "Dia: ";
+            	cin >> dia;
+            	cout << "Mes: ";
+            	cin >> dia;
+            	cout << "Anio: ";
+            	cin >> anio;
+            	DtFecha ficha(dia, mes, anio);
+            	imprimrConsultas(verConsultasAntesDeFecha(ficha, ci, conto ));
+            	cout << conto << " Consultas antes de " << ficha << endl;
             }
             
             else if (command == "7") {
